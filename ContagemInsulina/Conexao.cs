@@ -88,8 +88,8 @@ namespace ContagemInsulina
             {
                 using (var cmd = DbConnection().CreateCommand())
                 {
-                    cmd.CommandText = "INSERT INTO glicemia(id, valor, data ) values (@id, @valor, @data)";
-                    cmd.Parameters.AddWithValue("@id", glicemia.id);
+                    cmd.CommandText = "INSERT INTO glicemias( valor, data ) values (@valor, @data)";
+                    //cmd.Parameters.AddWithValue("@id", glicemia.id);
                     cmd.Parameters.AddWithValue("@valor", glicemia.valor);
                     cmd.Parameters.AddWithValue("@data", glicemia.data);
                     cmd.ExecuteNonQuery();

@@ -39,7 +39,6 @@ namespace ContagemInsulina
             {
                 qtdAplicar += (float)(valorGlicemia - valorglicemiaAlvo) / valorfs;
 
-                
             }
 
             aplicarInsulina.Text = string.Format("Aplicar {0:0.0} U.I.", qtdAplicar);
@@ -62,31 +61,15 @@ namespace ContagemInsulina
 
             Conexao.Add(glicemia);
 
+        }
 
-            /*
-            Conexao con = new Conexao();
-            try
+        private void checkBoxAlimentar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxAlimentar.Checked)
             {
-                Conexao.CriarBancoSQLite
+                Alimentos formAlimentos = new Alimentos();
+                formAlimentos.ShowDialog();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            String query = "SELECT * FROM glicemias";
-            SQLiteDataAdapter dados = new SQLiteDataAdapter(query, con.conn);
-
-            DataTable registro = new DataTable();
-
-            dados.Fill(registro);
-
-            String valor = registro.Rows[0]["valor"].ToString();
-
-            resultConsulta.Text = valor;
-
-            con.desconectar();
-            */
         }
     }
 }
