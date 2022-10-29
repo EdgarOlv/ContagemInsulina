@@ -21,6 +21,12 @@ namespace ContagemInsulina
             conn.Close();
         }*/
 
+        /*
+        https://www.macoratti.net/17/04/cshp_sqlite1.htm
+
+        https://www.macoratti.net/18/02/c_objrela1.htm
+        */
+
         private static SQLiteConnection sqliteConnection;
 
         public Conexao()
@@ -48,6 +54,7 @@ namespace ContagemInsulina
         {
             SQLiteDataAdapter da = null;
             DataTable dt = new DataTable();
+            String result = "";
             try
             {
                 using (var cmd = DbConnection().CreateCommand())
@@ -55,6 +62,7 @@ namespace ContagemInsulina
                     cmd.CommandText = "SELECT * FROM glicemias";
                     da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
+                    //result = dt.ToString();
                     return dt;
                 }
             }
@@ -71,7 +79,7 @@ namespace ContagemInsulina
             {
                 using (var cmd = DbConnection().CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM glicemias Where id=" + id;
+                    cmd.CommandText = "SELECT * FROM glicemias Where id= " + id;
                     da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
                     return dt;
