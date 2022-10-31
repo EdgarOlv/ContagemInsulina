@@ -30,12 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.resultConsulta = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.glicemiaAlvo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnCalcular = new System.Windows.Forms.Button();
-            this.fs = new System.Windows.Forms.TextBox();
             this.glicemiaAtual = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,7 +39,9 @@
             this.checkBoxCorrecao = new System.Windows.Forms.CheckBox();
             this.checkBoxAlimentar = new System.Windows.Forms.CheckBox();
             this.checkBoxMalhar = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnConfig = new System.Windows.Forms.Button();
+            this.a = new System.Windows.Forms.Label();
+            this.b = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // resultConsulta
@@ -55,48 +53,20 @@
             this.resultConsulta.Size = new System.Drawing.Size(0, 20);
             this.resultConsulta.TabIndex = 15;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(195, 66);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(106, 20);
-            this.label9.TabIndex = 26;
-            this.label9.Text = "Glicêmia alvo:";
-            // 
-            // glicemiaAlvo
-            // 
-            this.glicemiaAlvo.Location = new System.Drawing.Point(307, 66);
-            this.glicemiaAlvo.Name = "glicemiaAlvo";
-            this.glicemiaAlvo.Size = new System.Drawing.Size(26, 20);
-            this.glicemiaAlvo.TabIndex = 25;
-            this.glicemiaAlvo.Text = "110";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(80, 259);
+            this.label3.Location = new System.Drawing.Point(78, 229);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 20);
             this.label3.TabIndex = 21;
             this.label3.Text = "Resultado:";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(115, 66);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 20);
-            this.label4.TabIndex = 24;
-            this.label4.Text = "F.S.:";
-            // 
             // btnCalcular
             // 
             this.btnCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalcular.Location = new System.Drawing.Point(170, 188);
+            this.btnCalcular.Location = new System.Drawing.Point(174, 164);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(111, 37);
             this.btnCalcular.TabIndex = 1;
@@ -104,19 +74,11 @@
             this.btnCalcular.UseVisualStyleBackColor = true;
             this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
-            // fs
-            // 
-            this.fs.Location = new System.Drawing.Point(163, 66);
-            this.fs.Name = "fs";
-            this.fs.Size = new System.Drawing.Size(26, 20);
-            this.fs.TabIndex = 23;
-            this.fs.Text = "37";
-            // 
             // glicemiaAtual
             // 
             this.glicemiaAtual.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllSystemSources;
             this.glicemiaAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.glicemiaAtual.Location = new System.Drawing.Point(199, 110);
+            this.glicemiaAtual.Location = new System.Drawing.Point(203, 86);
             this.glicemiaAtual.Name = "glicemiaAtual";
             this.glicemiaAtual.Size = new System.Drawing.Size(160, 22);
             this.glicemiaAtual.TabIndex = 0;
@@ -125,7 +87,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(80, 110);
+            this.label1.Location = new System.Drawing.Point(84, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 20);
             this.label1.TabIndex = 18;
@@ -147,7 +109,7 @@
             // 
             this.aplicarInsulina.AutoSize = true;
             this.aplicarInsulina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aplicarInsulina.Location = new System.Drawing.Point(172, 256);
+            this.aplicarInsulina.Location = new System.Drawing.Point(170, 226);
             this.aplicarInsulina.Name = "aplicarInsulina";
             this.aplicarInsulina.Size = new System.Drawing.Size(31, 24);
             this.aplicarInsulina.TabIndex = 20;
@@ -156,7 +118,7 @@
             // checkBoxCorrecao
             // 
             this.checkBoxCorrecao.AutoSize = true;
-            this.checkBoxCorrecao.Location = new System.Drawing.Point(105, 152);
+            this.checkBoxCorrecao.Location = new System.Drawing.Point(109, 128);
             this.checkBoxCorrecao.Name = "checkBoxCorrecao";
             this.checkBoxCorrecao.Size = new System.Drawing.Size(69, 17);
             this.checkBoxCorrecao.TabIndex = 27;
@@ -166,7 +128,7 @@
             // checkBoxAlimentar
             // 
             this.checkBoxAlimentar.AutoSize = true;
-            this.checkBoxAlimentar.Location = new System.Drawing.Point(193, 152);
+            this.checkBoxAlimentar.Location = new System.Drawing.Point(197, 128);
             this.checkBoxAlimentar.Name = "checkBoxAlimentar";
             this.checkBoxAlimentar.Size = new System.Drawing.Size(69, 17);
             this.checkBoxAlimentar.TabIndex = 28;
@@ -177,21 +139,42 @@
             // checkBoxMalhar
             // 
             this.checkBoxMalhar.AutoSize = true;
-            this.checkBoxMalhar.Location = new System.Drawing.Point(279, 152);
+            this.checkBoxMalhar.Location = new System.Drawing.Point(283, 128);
             this.checkBoxMalhar.Name = "checkBoxMalhar";
             this.checkBoxMalhar.Size = new System.Drawing.Size(58, 17);
             this.checkBoxMalhar.TabIndex = 29;
             this.checkBoxMalhar.Text = "Malhar";
             this.checkBoxMalhar.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnConfig
             // 
-            this.button2.Location = new System.Drawing.Point(388, 31);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(48, 35);
-            this.button2.TabIndex = 30;
-            this.button2.Text = "Config";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnConfig.Location = new System.Drawing.Point(388, 31);
+            this.btnConfig.Name = "btnConfig";
+            this.btnConfig.Size = new System.Drawing.Size(48, 35);
+            this.btnConfig.TabIndex = 30;
+            this.btnConfig.Text = "Config";
+            this.btnConfig.UseVisualStyleBackColor = true;
+            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
+            // 
+            // a
+            // 
+            this.a.AutoSize = true;
+            this.a.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.a.Location = new System.Drawing.Point(12, 263);
+            this.a.Name = "a";
+            this.a.Size = new System.Drawing.Size(17, 24);
+            this.a.TabIndex = 31;
+            this.a.Text = "-";
+            // 
+            // b
+            // 
+            this.b.AutoSize = true;
+            this.b.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b.Location = new System.Drawing.Point(416, 263);
+            this.b.Name = "b";
+            this.b.Size = new System.Drawing.Size(17, 24);
+            this.b.TabIndex = 32;
+            this.b.Text = "-";
             // 
             // Form1
             // 
@@ -199,16 +182,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(445, 296);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.b);
+            this.Controls.Add(this.a);
+            this.Controls.Add(this.btnConfig);
             this.Controls.Add(this.checkBoxMalhar);
             this.Controls.Add(this.checkBoxAlimentar);
             this.Controls.Add(this.checkBoxCorrecao);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.glicemiaAlvo);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCalcular);
-            this.Controls.Add(this.fs);
             this.Controls.Add(this.glicemiaAtual);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
@@ -218,6 +199,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculo de Insulina";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,12 +207,8 @@
 
         #endregion
         private System.Windows.Forms.Label resultConsulta;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox glicemiaAlvo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCalcular;
-        private System.Windows.Forms.TextBox fs;
         private System.Windows.Forms.TextBox glicemiaAtual;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -238,7 +216,9 @@
         private System.Windows.Forms.CheckBox checkBoxCorrecao;
         private System.Windows.Forms.CheckBox checkBoxAlimentar;
         private System.Windows.Forms.CheckBox checkBoxMalhar;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnConfig;
+        private System.Windows.Forms.Label a;
+        private System.Windows.Forms.Label b;
     }
 }
 
