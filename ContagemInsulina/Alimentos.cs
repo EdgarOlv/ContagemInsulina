@@ -19,6 +19,7 @@ namespace ContagemInsulina
 
         private void Alimentos_Load(object sender, EventArgs e)
         {
+            Alimento alimento = new Alimento(Conexao.GetAlimentos());
 
         }
     }

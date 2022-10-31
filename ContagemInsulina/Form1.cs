@@ -1,18 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SQLite;
 
 namespace ContagemInsulina
 {
     public partial class Form1 : Form
     {
+
+        /*  ISSUES
+         * 
+         * Configurações:
+         * -Carregar informações das config no banco para o Config.cs
+         * -Evento para update se alterar essas configs
+         * 
+         * Alimentos:
+         * -Classe para alimentos e CRUD geral
+         * 
+         * 
+         * */
+
+        int valorfs = 0;
+        int valorglicemiaAlvo = 0;
+
+
         public Form1()
         {
             InitializeComponent();
@@ -24,42 +33,42 @@ namespace ContagemInsulina
         private void btnCalcular_Click(object sender, EventArgs e)
         {
             int valorGlicemia = 0;
-            int valorfs = 0;
-            int valorglicemiaAlvo = 0;
             float qtdAplicar = 0;
 
-            valorGlicemia = Convert.ToInt32(glicemiaAtual.Text);
-            valorfs = Convert.ToInt32(fs.Text);
-            valorglicemiaAlvo = Convert.ToInt32(glicemiaAlvo.Text);
-
-            
-            //-------------------------
-
-            if (checkBoxCorrecao.Checked)
+            if (glicemiaAtual.Text != "")
             {
-                qtdAplicar += (float)(valorGlicemia - valorglicemiaAlvo) / valorfs;
 
+                valorGlicemia = Convert.ToInt32(glicemiaAtual.Text);
+    
+
+                Glicemia glicemia = new Glicemia(valorGlicemia);
+
+                //Conexao.Add(glicemia);
+
+                //-------------------------
+
+                //a.Text = valorglicemiaAlvo.ToString();
+                //b.Text = valorfs.ToString();
+
+                if (checkBoxCorrecao.Checked)
+                {
+                    if(valorGlicemia < valorglicemiaAlvo)
+                    {
+                        qtdAplicar = 0;
+                    }
+                    else
+                    {
+                        qtdAplicar += (float)(valorGlicemia - valorglicemiaAlvo) / valorfs;
+                    }
+
+                }
+
+                aplicarInsulina.Text = string.Format("Aplicar {0:0.0} U.I.", qtdAplicar);
             }
-
-            aplicarInsulina.Text = string.Format("Aplicar {0:0.0} U.I.", qtdAplicar);
-
-        }
-
-        private void btnAnalisar_Click(object sender, EventArgs e)
-        {
-            int valorGlicemia = 0;
-            //valorGlicemia = Convert.ToInt32(glicemiaAnalise.Text);
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-            Glicemia glicemia = new Glicemia();
-
-            glicemia.valor = Convert.ToInt32(glicemiaAtual.Text);
-
-            Conexao.Add(glicemia);
+            else
+            {
+                MessageBox.Show("Digite o valor da glicemia", "Glicemia não inserida");
+            }
 
         }
 
@@ -70,6 +79,22 @@ namespace ContagemInsulina
                 Alimentos formAlimentos = new Alimentos();
                 formAlimentos.ShowDialog();
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Config configuracaoFS = new Config(Conexao.GetConfigFS());
+            Config configuracaoAlvo = new Config(Conexao.GetConfigAlvo());
+
+            valorglicemiaAlvo = configuracaoAlvo.valor;
+            valorfs = configuracaoFS.valor;
+
+        }
+
+        private void btnConfig_Click(object sender, EventArgs e)
+        {
+            Config configuracoes = new Config();
+            configuracoes.ShowDialog();
         }
     }
 }
