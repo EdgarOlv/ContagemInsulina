@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Markup;
 
 namespace ContagemInsulina
 {
@@ -23,11 +24,11 @@ namespace ContagemInsulina
             InitializeComponent();
         }
 
-        public Config(DataTable data)
+        public Config(int id, String nome, int valor)
         {
-            this.id = Convert.ToInt32(data.Rows[0]["id"]);
-            this.nome = Convert.ToString(data.Rows[0]["nome"]);
-            this.valor = Convert.ToInt32(data.Rows[0]["valor"]);
+            this.id = id;
+            this.nome = nome;
+            this.valor = valor;
         }
 
         /*public String getValor(int id)
@@ -44,11 +45,28 @@ namespace ContagemInsulina
 
         private void Config_Load(object sender, EventArgs e)
         {
-            Config configuracaoFS = new Config(Conexao.GetConfigFS());
-            Config configuracaoAlvo = new Config(Conexao.GetConfigAlvo());
+            List<Config> ListConfig = Conexao.GetConfigAll();
 
-            fs.Text = Convert.ToString(configuracaoFS.valor);
-            glicemiaAlvo.Text = Convert.ToString(configuracaoAlvo.valor);
+            ListConfig.ForEach(objeto =>
+            {
+                switch (Convert.ToInt32(objeto.id))
+                {
+                    case 1: //F.S.
+                        fs.Text = Convert.ToString(objeto.valor);
+                        break;
+
+                    case 2: //Alvo
+                        glicemiaAlvo.Text = Convert.ToString(objeto.valor);
+                        break;
+
+                    case 3: //Carboidrato
+                        carb.Text = Convert.ToString(objeto.valor);
+                        break;
+                }
+            });
+
+            //fs.Text = Convert.ToString(configuracaoFS.valor);
+            //glicemiaAlvo.Text = Convert.ToString(configuracaoAlvo.valor);
         }
     }
 }

@@ -82,6 +82,7 @@
             this.glicemiaAtual.Name = "glicemiaAtual";
             this.glicemiaAtual.Size = new System.Drawing.Size(160, 22);
             this.glicemiaAtual.TabIndex = 0;
+            this.glicemiaAtual.KeyDown += new System.Windows.Forms.KeyEventHandler(this.glicemiaAtual_KeyDown);
             // 
             // label1
             // 

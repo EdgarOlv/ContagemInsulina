@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ContagemInsulina
@@ -11,6 +12,8 @@ namespace ContagemInsulina
          * Configurações:
          * -Carregar informações das config no banco para o Config.cs
          * -Evento para update se alterar essas configs
+         * -Conseguir pegar ulmima leitura (pode esquecer quanto aplicar)
+         * -Poder colocar hora diferente
          * 
          * Alimentos:
          * -Classe para alimentos e CRUD geral
@@ -37,22 +40,15 @@ namespace ContagemInsulina
 
             if (glicemiaAtual.Text != "")
             {
-
                 valorGlicemia = Convert.ToInt32(glicemiaAtual.Text);
     
-
                 Glicemia glicemia = new Glicemia(valorGlicemia);
-
-                //Conexao.Add(glicemia);
-
-                //-------------------------
-
-                //a.Text = valorglicemiaAlvo.ToString();
-                //b.Text = valorfs.ToString();
 
                 if (checkBoxCorrecao.Checked)
                 {
-                    if(valorGlicemia < valorglicemiaAlvo)
+                    Conexao.Add(glicemia);
+
+                    if (valorGlicemia < valorglicemiaAlvo)
                     {
                         qtdAplicar = 0;
                     }
@@ -62,7 +58,6 @@ namespace ContagemInsulina
                     }
 
                 }
-
                 aplicarInsulina.Text = string.Format("Aplicar {0:0.0} U.I.", qtdAplicar);
             }
             else
@@ -83,11 +78,22 @@ namespace ContagemInsulina
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Config configuracaoFS = new Config(Conexao.GetConfigFS());
-            Config configuracaoAlvo = new Config(Conexao.GetConfigAlvo());
 
-            valorglicemiaAlvo = configuracaoAlvo.valor;
-            valorfs = configuracaoFS.valor;
+            List<Config> ListConfig = Conexao.GetConfigAll();
+
+            ListConfig.ForEach(objeto =>
+            {
+                switch (Convert.ToInt32(objeto.id))
+                {
+                    case 1: //F.S.
+                        valorfs = Convert.ToInt32(objeto.valor);
+                    break;
+
+                    case 2: //Alvo
+                        valorglicemiaAlvo = Convert.ToInt32(objeto.valor);
+                    break;
+                } 
+            });
 
         }
 
@@ -95,6 +101,14 @@ namespace ContagemInsulina
         {
             Config configuracoes = new Config();
             configuracoes.ShowDialog();
+        }
+
+        private void glicemiaAtual_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                btnCalcular_Click(sender, e);
+            }
         }
     }
 }
