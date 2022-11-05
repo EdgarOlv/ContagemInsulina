@@ -36,7 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.carb = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label9
@@ -115,13 +115,12 @@
             this.label1.TabIndex = 35;
             this.label1.Text = "Relação carboidrato   1/";
             // 
-            // textBox1
+            // carb
             // 
-            this.textBox1.Location = new System.Drawing.Point(199, 138);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(57, 20);
-            this.textBox1.TabIndex = 34;
-            this.textBox1.Text = "8";
+            this.carb.Location = new System.Drawing.Point(199, 138);
+            this.carb.Name = "carb";
+            this.carb.Size = new System.Drawing.Size(57, 20);
+            this.carb.TabIndex = 34;
             // 
             // Config
             // 
@@ -130,7 +129,7 @@
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(375, 275);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.carb);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCalcular);
@@ -157,6 +156,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox carb;
     }
 }

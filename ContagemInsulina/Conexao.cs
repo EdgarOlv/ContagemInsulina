@@ -10,16 +10,6 @@ namespace ContagemInsulina
 {
     internal class Conexao
     {
-        //public SQLiteConnection conn = new SQLiteConnection("Data Source=D:\\DevAndroidStudio\\ContagemInsulina\\CalcInsulina.db");
-
-        /*public void conectar()
-        {
-            conn.Open();
-        }
-        public void desconectar()
-        {
-            conn.Close();
-        }*/
 
         /*
         https://www.macoratti.net/17/04/cshp_sqlite1.htm
@@ -90,37 +80,27 @@ namespace ContagemInsulina
                 throw ex;
             }
         }
-        public static DataTable GetConfigFS()
+        
+        public static List<Config> GetConfigAll()
         {
+
             SQLiteDataAdapter da = null;
             DataTable dt = new DataTable();
             try
             {
                 using (var cmd = DbConnection().CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM config WHERE id = 1";
+                    cmd.CommandText = "SELECT * FROM config";
                     da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
-                    return dt;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public static DataTable GetConfigAlvo()
-        {
-            SQLiteDataAdapter da = null;
-            DataTable dt = new DataTable();
-            try
-            {
-                using (var cmd = DbConnection().CreateCommand())
-                {
-                    cmd.CommandText = "SELECT * FROM config WHERE id = 2";
-                    da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
-                    da.Fill(dt);
-                    return dt;
+                    var listConfig = new List<Config>();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var config = new Config(Convert.ToInt32(row["id"]), Convert.ToString(row["nome"]), Convert.ToInt32(row["valor"]));
+                        listConfig.Add(config);
+                    }
+
+                    return listConfig;
                 }
             }
             catch (Exception ex)
