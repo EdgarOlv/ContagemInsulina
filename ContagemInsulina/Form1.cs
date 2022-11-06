@@ -46,7 +46,7 @@ namespace ContagemInsulina
 
                 if (checkBoxCorrecao.Checked)
                 {
-                    Conexao.Add(glicemia);
+                    //Conexao.Add(glicemia);
 
                     if (valorGlicemia < valorglicemiaAlvo)
                     {
@@ -100,6 +100,7 @@ namespace ContagemInsulina
         private void btnConfig_Click(object sender, EventArgs e)
         {
             Config configuracoes = new Config();
+            this.Hide();
             configuracoes.ShowDialog();
         }
 
@@ -109,6 +110,20 @@ namespace ContagemInsulina
             {
                 btnCalcular_Click(sender, e);
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            /*
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
+                if (result != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+            }
+            */
         }
     }
 }
