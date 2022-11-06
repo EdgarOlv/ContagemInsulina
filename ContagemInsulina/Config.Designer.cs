@@ -82,6 +82,7 @@
             this.btnCalcular.TabIndex = 31;
             this.btnCalcular.Text = "Salvar";
             this.btnCalcular.UseVisualStyleBackColor = true;
+            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
             // label2
             // 
@@ -139,7 +140,8 @@
             this.Controls.Add(this.fs);
             this.Name = "Config";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Config";
+            this.Text = "Configurações Calculo Insulina";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Config_FormClosing);
             this.Load += new System.EventHandler(this.Config_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

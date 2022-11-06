@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Data;
+using System.Windows;
 
 namespace ContagemInsulina
 {
@@ -44,7 +45,7 @@ namespace ContagemInsulina
         {
             SQLiteDataAdapter da = null;
             DataTable dt = new DataTable();
-            String result = "";
+            //String result = "";
             try
             {
                 using (var cmd = DbConnection().CreateCommand())
@@ -151,12 +152,32 @@ namespace ContagemInsulina
             {
                 using (var cmd = new SQLiteCommand(DbConnection()))
                 {
-                    if (glicemia.id != null)
+                    if (glicemia.id != 0)
                     {
                         cmd.CommandText = "UPDATE glicemia SET valor=@valor, data=@data WHERE id=@id";
                         cmd.Parameters.AddWithValue("@id", glicemia.id);
                         cmd.Parameters.AddWithValue("@valor", glicemia.valor);
                         cmd.Parameters.AddWithValue("@data", glicemia.data);
+                        cmd.ExecuteNonQuery();
+                    }
+                };
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void UpdateConfig(int idCampo, int valorCampo)
+        {
+            try
+            {
+                using (var cmd = new SQLiteCommand(DbConnection()))
+                {
+                    if (idCampo != null)
+                    {
+                        cmd.CommandText = "UPDATE config SET valor=@valor WHERE id=@id";
+                        cmd.Parameters.AddWithValue("@id", idCampo);
+                        cmd.Parameters.AddWithValue("@valor", valorCampo);
                         cmd.ExecuteNonQuery();
                     }
                 };
