@@ -109,7 +109,7 @@ namespace ContagemInsulina
                 throw ex;
             }
         }
-        public static DataTable GetAlimentos()
+        public static List<Alimento> GetAlimentos()
         {
             SQLiteDataAdapter da = null;
             DataTable dt = new DataTable();
@@ -120,7 +120,14 @@ namespace ContagemInsulina
                     cmd.CommandText = "SELECT * FROM alimentos";
                     da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
-                    return dt;
+                    var carbAlimentos = new List<Alimento>();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var alimento = new Alimento(Convert.ToInt32(row["id"]), Convert.ToString(row["id_nome"]),Convert.ToString(row["nome"]), Convert.ToInt32(row["qtd_carboidrato"]));
+                        carbAlimentos.Add(alimento);
+                    }
+
+                    return carbAlimentos;
                 }
             }
             catch (Exception ex)

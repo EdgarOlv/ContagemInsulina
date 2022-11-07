@@ -10,19 +10,20 @@ namespace ContagemInsulina
         /*  ISSUES
          * 
          * Configurações:
-         * -Carregar informações das config no banco para o Config.cs
-         * -Evento para update se alterar essas configs
          * -Conseguir pegar ulmima leitura (pode esquecer quanto aplicar)
          * -Poder colocar hora diferente
          * 
-         * Alimentos:
-         * -Classe para alimentos e CRUD geral
+         * -Evento salvar no banco configurações alimentos
          * 
          * 
          * */
 
         int valorfs = 0;
         int valorglicemiaAlvo = 0;
+        int valorRelacaoCarb = 0;
+
+        internal static int qtdCarboidrato { get; set; }
+        internal static String nomeAlimento { get; set; }
 
 
         public Form1()
@@ -36,7 +37,10 @@ namespace ContagemInsulina
         private void btnCalcular_Click(object sender, EventArgs e)
         {
             int valorGlicemia = 0;
-            float qtdAplicar = 0;
+            float qtdCorrecao = 0;
+            float qtdAlimentacao = 0;
+
+            aplicarInsulina.Text = string.Format("Aplicar");
 
             if (glicemiaAtual.Text != "")
             {
@@ -44,26 +48,35 @@ namespace ContagemInsulina
     
                 Glicemia glicemia = new Glicemia(valorGlicemia);
 
+
                 if (checkBoxCorrecao.Checked)
                 {
-                    //Conexao.Add(glicemia);
 
                     if (valorGlicemia < valorglicemiaAlvo)
                     {
-                        qtdAplicar = 0;
+                        qtdCorrecao = 0;
                     }
                     else
                     {
-                        qtdAplicar += (float)(valorGlicemia - valorglicemiaAlvo) / valorfs;
+                        qtdCorrecao += (float)(valorGlicemia - valorglicemiaAlvo) / valorfs;
                     }
+                    aplicarInsulina.Text += string.Format(" Correção {0:0.0}UI ", qtdCorrecao);
 
                 }
-                aplicarInsulina.Text = string.Format("Aplicar {0:0.0} U.I.", qtdAplicar);
+
+                //Conexao.Add(glicemia);
+                MessageBox.Show("Registro inserido!");
             }
-            else
+
+            if (checkBoxAlimentar.Checked)
             {
-                MessageBox.Show("Digite o valor da glicemia", "Glicemia não inserida");
+                qtdAlimentacao += (float)qtdCarboidrato / valorRelacaoCarb;
+
+                aplicarInsulina.Text += string.Format(" Alimento {0:0.0}UI ", qtdAlimentacao);
+
             }
+
+            totalAplicar.Text = string.Format(" Aplicar: {0:0.0}UI ", qtdCorrecao + qtdAlimentacao);
 
         }
 
@@ -78,7 +91,12 @@ namespace ContagemInsulina
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            CarregarConfiguracoes();
+            CarregarAlimentos();
+        }
 
+        private void CarregarConfiguracoes()
+        {
             List<Config> ListConfig = Conexao.GetConfigAll();
 
             ListConfig.ForEach(objeto =>
@@ -87,14 +105,25 @@ namespace ContagemInsulina
                 {
                     case 1: //F.S.
                         valorfs = Convert.ToInt32(objeto.valor);
-                    break;
+                        break;
 
                     case 2: //Alvo
                         valorglicemiaAlvo = Convert.ToInt32(objeto.valor);
-                    break;
-                } 
-            });
+                        break;
 
+                    case 3: //Alvo
+                        valorRelacaoCarb = Convert.ToInt32(objeto.valor);
+                        break;
+                }
+            });
+        }
+
+        private void CarregarAlimentos()
+        {
+            if(nomeAlimento != "")
+            {
+                refeicao.Text = nomeAlimento;
+            }
         }
 
         private void btnConfig_Click(object sender, EventArgs e)
@@ -125,5 +154,13 @@ namespace ContagemInsulina
             }
             */
         }
+
+        public void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Convert.ToString(qtdCarboidrato));
+            MessageBox.Show(Convert.ToString(nomeAlimento));
+            refeicao.Text = nomeAlimento;
+        }
+        
     }
 }

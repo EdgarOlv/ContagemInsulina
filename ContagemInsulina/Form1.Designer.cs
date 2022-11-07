@@ -42,6 +42,9 @@
             this.btnConfig = new System.Windows.Forms.Button();
             this.a = new System.Windows.Forms.Label();
             this.b = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.refeicao = new System.Windows.Forms.Label();
+            this.totalAplicar = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // resultConsulta
@@ -57,7 +60,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(78, 229);
+            this.label3.Location = new System.Drawing.Point(22, 220);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 20);
             this.label3.TabIndex = 21;
@@ -66,7 +69,7 @@
             // btnCalcular
             // 
             this.btnCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalcular.Location = new System.Drawing.Point(174, 164);
+            this.btnCalcular.Location = new System.Drawing.Point(170, 175);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(111, 37);
             this.btnCalcular.TabIndex = 1;
@@ -109,10 +112,10 @@
             // aplicarInsulina
             // 
             this.aplicarInsulina.AutoSize = true;
-            this.aplicarInsulina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aplicarInsulina.Location = new System.Drawing.Point(170, 226);
+            this.aplicarInsulina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aplicarInsulina.Location = new System.Drawing.Point(106, 223);
             this.aplicarInsulina.Name = "aplicarInsulina";
-            this.aplicarInsulina.Size = new System.Drawing.Size(31, 24);
+            this.aplicarInsulina.Size = new System.Drawing.Size(19, 16);
             this.aplicarInsulina.TabIndex = 20;
             this.aplicarInsulina.Text = "---";
             // 
@@ -149,9 +152,9 @@
             // 
             // btnConfig
             // 
-            this.btnConfig.Location = new System.Drawing.Point(388, 31);
+            this.btnConfig.Location = new System.Drawing.Point(385, 12);
             this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(48, 35);
+            this.btnConfig.Size = new System.Drawing.Size(48, 24);
             this.btnConfig.TabIndex = 30;
             this.btnConfig.Text = "Config";
             this.btnConfig.UseVisualStyleBackColor = true;
@@ -161,7 +164,7 @@
             // 
             this.a.AutoSize = true;
             this.a.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.a.Location = new System.Drawing.Point(12, 263);
+            this.a.Location = new System.Drawing.Point(12, 272);
             this.a.Name = "a";
             this.a.Size = new System.Drawing.Size(17, 24);
             this.a.TabIndex = 31;
@@ -171,18 +174,52 @@
             // 
             this.b.AutoSize = true;
             this.b.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.b.Location = new System.Drawing.Point(416, 263);
+            this.b.Location = new System.Drawing.Point(416, 272);
             this.b.Name = "b";
             this.b.Size = new System.Drawing.Size(17, 24);
             this.b.TabIndex = 32;
             this.b.Text = "-";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(385, 42);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(48, 22);
+            this.button1.TabIndex = 33;
+            this.button1.Text = "Teste";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // refeicao
+            // 
+            this.refeicao.AutoSize = true;
+            this.refeicao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refeicao.Location = new System.Drawing.Point(215, 148);
+            this.refeicao.Name = "refeicao";
+            this.refeicao.Size = new System.Drawing.Size(22, 16);
+            this.refeicao.TabIndex = 34;
+            this.refeicao.Text = "---";
+            // 
+            // totalAplicar
+            // 
+            this.totalAplicar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.totalAplicar.AutoSize = true;
+            this.totalAplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAplicar.Location = new System.Drawing.Point(154, 255);
+            this.totalAplicar.Name = "totalAplicar";
+            this.totalAplicar.Size = new System.Drawing.Size(0, 20);
+            this.totalAplicar.TabIndex = 35;
+            this.totalAplicar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(445, 296);
+            this.ClientSize = new System.Drawing.Size(445, 305);
+            this.Controls.Add(this.totalAplicar);
+            this.Controls.Add(this.refeicao);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.b);
             this.Controls.Add(this.a);
             this.Controls.Add(this.btnConfig);
@@ -196,6 +233,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.aplicarInsulina);
             this.Controls.Add(this.resultConsulta);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -221,6 +259,9 @@
         private System.Windows.Forms.Button btnConfig;
         private System.Windows.Forms.Label a;
         private System.Windows.Forms.Label b;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label refeicao;
+        private System.Windows.Forms.Label totalAplicar;
     }
 }
 

@@ -14,6 +14,14 @@ namespace ContagemInsulina
         public String nome;
         public int qtd_carboidrato;
 
+        public Alimento(int id, string id_nome, string nome, int qtd_carboidrato)
+        {
+            this.id = id;
+            this.id_nome = id_nome;
+            this.nome = nome;
+            this.qtd_carboidrato = qtd_carboidrato;
+        }
+
         public Alimento(DataTable data)
         {
             this.id = Convert.ToInt32(data.Rows[0]["id"]);
