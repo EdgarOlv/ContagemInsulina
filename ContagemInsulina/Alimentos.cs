@@ -18,42 +18,43 @@ namespace ContagemInsulina
         private void alimento6_Click(object sender, EventArgs e)
         {
             Form1.qtdCarboidrato = valorCarb[0];
-            Form1.nomeAlimento = nomeAlimentos[0];
+            Form1.campoTextoAlimento.nomeAlimento = nomeAlimentos[0];
             this.Hide();
         }
 
         private void alimento5_Click(object sender, EventArgs e)
         {
             Form1.qtdCarboidrato = valorCarb[1];
-            Form1.nomeAlimento = nomeAlimentos[1];
+            Form1.campoTextoAlimento.nomeAlimento = nomeAlimentos[1];
             this.Hide();
         }
 
         private void alimento4_Click(object sender, EventArgs e)
         {
             Form1.qtdCarboidrato = valorCarb[2];
-            Form1.nomeAlimento = nomeAlimentos[2];
+            Form1.campoTextoAlimento.nomeAlimento = nomeAlimentos[2];
             this.Hide();
         }
 
         private void alimento3_Click(object sender, EventArgs e)
         {
             Form1.qtdCarboidrato = valorCarb[3];
-            Form1.nomeAlimento = nomeAlimentos[3];
+            Form1.campoTextoAlimento.nomeAlimento = nomeAlimentos[3];
             this.Hide();
         }
 
         private void alimento2_Click(object sender, EventArgs e)
         {
             Form1.qtdCarboidrato = valorCarb[4];
-            Form1.nomeAlimento = nomeAlimentos[4];
+            Form1.campoTextoAlimento.nomeAlimento = nomeAlimentos[4];
             this.Hide();
         }
 
         private void alimento1_Click(object sender, EventArgs e)
         {
             Form1.qtdCarboidrato = valorCarb[5];
-            Form1.nomeAlimento = nomeAlimentos[5];
+            Form1.campoTextoAlimento.nomeAlimento = nomeAlimentos[5];
+            
             this.Hide();
             
         }
@@ -68,6 +69,40 @@ namespace ContagemInsulina
             //inicializar e pegar valores das refeições e deixar no banco
             //usar swith para analisar o clic
             //Alimento alimento = new Alimento(Conexao.GetAlimentos());
+
+            TimeSpan horario = new TimeSpan(00, 00, 00);
+            TimeSpan horario2 = new TimeSpan(09, 00, 00);
+            TimeSpan horario3 = new TimeSpan(12, 00, 00);
+            TimeSpan horario4 = new TimeSpan(15, 00, 00);
+            TimeSpan horario5 = new TimeSpan(18, 00, 00);
+            TimeSpan horario6 = new TimeSpan(21, 00, 00);
+
+            TimeSpan horaAtual = DateTime.Now.TimeOfDay;
+
+            if (horaAtual >= horario && horaAtual <= horario2)
+            {
+                this.ActiveControl = alimento1; 
+            }
+            if (horaAtual >= horario2 && horaAtual <= horario3)
+            {
+                this.ActiveControl = alimento2;
+            }
+            if (horaAtual >= horario3 && horaAtual <= horario4)
+            {
+                this.ActiveControl = alimento3;
+            }
+            if (horaAtual >= horario4 && horaAtual <= horario5)
+            {
+                this.ActiveControl = alimento4;
+            }
+            if (horaAtual >= horario5 && horaAtual <= horario6)
+            {
+                this.ActiveControl = alimento5;
+            }
+            if (horaAtual >= horario6 && horaAtual <= horario)
+            {
+                this.ActiveControl = alimento6;
+            }
 
             List<Alimento> CarbAlimentos = Conexao.GetAlimentos();
             CarbAlimentos.ForEach(objeto =>

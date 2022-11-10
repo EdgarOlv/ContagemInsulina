@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace ContagemInsulina
@@ -14,7 +15,7 @@ namespace ContagemInsulina
          * -Poder colocar hora diferente
          * 
          * -Evento salvar no banco configurações alimentos
-         * 
+         * https://www.youtube.com/watch?v=rjT-IxcAheQ&ab_channel=C%C3%B3digoLogo
          * 
          * */
 
@@ -23,7 +24,7 @@ namespace ContagemInsulina
         int valorRelacaoCarb = 0;
 
         internal static int qtdCarboidrato { get; set; }
-        internal static String nomeAlimento { get; set; }
+        //internal static String nomeAlimento { get; set; }
 
 
         public Form1()
@@ -64,7 +65,7 @@ namespace ContagemInsulina
 
                 }
 
-                //Conexao.Add(glicemia);
+                Conexao.Add(glicemia);
                 MessageBox.Show("Registro inserido!");
             }
 
@@ -77,6 +78,14 @@ namespace ContagemInsulina
             }
 
             totalAplicar.Text = string.Format(" Aplicar: {0:0.0}UI ", qtdCorrecao + qtdAlimentacao);
+
+            if (checkBoxMalhar.Checked)
+            {
+                qtdAlimentacao += (float)qtdCarboidrato / valorRelacaoCarb;
+
+                totalAplicar.Text += string.Format(" Alimento {0:0.0}UI ", qtdAlimentacao);
+
+            }
 
         }
 
@@ -93,6 +102,50 @@ namespace ContagemInsulina
         {
             CarregarConfiguracoes();
             CarregarAlimentos();
+            AnaliseHorario();
+        }
+
+        private void AnaliseHorario()
+        {
+            TimeSpan horario = new TimeSpan(00, 00, 00);
+            TimeSpan horario2 = new TimeSpan(09, 00, 00);
+            TimeSpan horario3 = new TimeSpan(12, 00, 00);
+            TimeSpan horario4 = new TimeSpan(15, 00, 00);
+            TimeSpan horario5 = new TimeSpan(18, 00, 00);
+            TimeSpan horario6 = new TimeSpan(21, 00, 00);
+
+            TimeSpan horaAtual = DateTime.Now.TimeOfDay;
+
+            if (horaAtual >= horario && horaAtual <= horario2)
+            {
+                a.Text = "Café";
+                //MessageBox.Show("Café"); 
+            }
+            if (horaAtual >= horario2 && horaAtual <= horario3)
+            {
+                a.Text = "Lanche manha";
+                //MessageBox.Show("Lanche manha"); 
+            }
+            if (horaAtual >= horario3 && horaAtual <= horario4)
+            {
+                a.Text = "Almoço";
+                //MessageBox.Show("Almoço"); 
+            }
+            if (horaAtual >= horario4 && horaAtual <= horario5)
+            {
+                a.Text = "Lanche tarde";
+                //MessageBox.Show("Lanche tarde"); 
+            }
+            if (horaAtual >= horario5 && horaAtual <= horario6)
+            {
+                a.Text = "Jantar";
+                //MessageBox.Show("Jantar"); 
+            }
+            if (horaAtual >= horario6)
+            {
+                a.Text = "Lanche noite";
+                //MessageBox.Show("Lanche noite");
+            }
         }
 
         private void CarregarConfiguracoes()
@@ -120,9 +173,12 @@ namespace ContagemInsulina
 
         private void CarregarAlimentos()
         {
-            if(nomeAlimento != "")
+            
+
+            if (campoTextoAlimento.nomeAlimento != "")
             {
-                refeicao.Text = nomeAlimento;
+                refeicao.Text = campoTextoAlimento.nomeAlimento;
+
             }
         }
 
@@ -158,9 +214,18 @@ namespace ContagemInsulina
         public void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show(Convert.ToString(qtdCarboidrato));
-            MessageBox.Show(Convert.ToString(nomeAlimento));
-            refeicao.Text = nomeAlimento;
+            MessageBox.Show(Convert.ToString(campoTextoAlimento.nomeAlimento));
+            refeicao.Text = campoTextoAlimento.nomeAlimento;
         }
-        
+
+        public static class campoTextoAlimento
+        {
+            public static string nomeAlimento { get; set; }
+
+        }
+        protected static void reiniciar()
+        {
+            
+        }
     }
 }

@@ -180,7 +180,7 @@ namespace ContagemInsulina
             {
                 using (var cmd = new SQLiteCommand(DbConnection()))
                 {
-                    if (idCampo != null)
+                    if (idCampo != 0)
                     {
                         cmd.CommandText = "UPDATE config SET valor=@valor WHERE id=@id";
                         cmd.Parameters.AddWithValue("@id", idCampo);
