@@ -90,6 +90,7 @@
     <Compile Include="EditAlimentos.Designer.cs">
       <DependentUpon>EditAlimentos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Exercicio.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
