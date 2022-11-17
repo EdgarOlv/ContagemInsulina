@@ -14,47 +14,53 @@ namespace ContagemInsulina
     {
         int[] valorCarb = new int[10];
         String[] nomeAlimentos = new String[10];
+        Form1 form1;  
 
-        private void alimento6_Click(object sender, EventArgs e)
+        public void alimento6_Click(object sender, EventArgs e)
         {
             Form1.qtdCarboidrato = valorCarb[0];
             Form1.campoTextoAlimento.nomeAlimento = nomeAlimentos[0];
+            this.form1.ExibirNomeAlimento();
             this.Hide();
         }
 
-        private void alimento5_Click(object sender, EventArgs e)
+        public void alimento5_Click(object sender, EventArgs e)
         {
             Form1.qtdCarboidrato = valorCarb[1];
             Form1.campoTextoAlimento.nomeAlimento = nomeAlimentos[1];
+            this.form1.ExibirNomeAlimento();
             this.Hide();
         }
 
-        private void alimento4_Click(object sender, EventArgs e)
+        public void alimento4_Click(object sender, EventArgs e)
         {
             Form1.qtdCarboidrato = valorCarb[2];
             Form1.campoTextoAlimento.nomeAlimento = nomeAlimentos[2];
+            this.form1.ExibirNomeAlimento();
             this.Hide();
         }
 
-        private void alimento3_Click(object sender, EventArgs e)
+        public void alimento3_Click(object sender, EventArgs e)
         {
             Form1.qtdCarboidrato = valorCarb[3];
             Form1.campoTextoAlimento.nomeAlimento = nomeAlimentos[3];
+            this.form1.ExibirNomeAlimento();
             this.Hide();
         }
 
-        private void alimento2_Click(object sender, EventArgs e)
+        public void alimento2_Click(object sender, EventArgs e)
         {
             Form1.qtdCarboidrato = valorCarb[4];
             Form1.campoTextoAlimento.nomeAlimento = nomeAlimentos[4];
+            this.form1.ExibirNomeAlimento();
             this.Hide();
         }
 
-        private void alimento1_Click(object sender, EventArgs e)
+        public void alimento1_Click(object sender, EventArgs e)
         {
             Form1.qtdCarboidrato = valorCarb[5];
             Form1.campoTextoAlimento.nomeAlimento = nomeAlimentos[5];
-            
+            this.form1.ExibirNomeAlimento();
             this.Hide();
             
         }
@@ -62,6 +68,13 @@ namespace ContagemInsulina
         public Alimentos()
         {
             InitializeComponent();
+        }
+
+        public Alimentos(Form1 form1)
+        {
+            this.form1 = form1;
+            InitializeComponent();
+            InicializaDadosAlimentos();
         }
 
         private void Alimentos_Load(object sender, EventArgs e)
@@ -81,7 +94,7 @@ namespace ContagemInsulina
 
             if (horaAtual >= horario && horaAtual <= horario2)
             {
-                this.ActiveControl = alimento1; 
+                this.ActiveControl = alimento1;
             }
             if (horaAtual >= horario2 && horaAtual <= horario3)
             {
@@ -99,11 +112,17 @@ namespace ContagemInsulina
             {
                 this.ActiveControl = alimento5;
             }
-            if (horaAtual >= horario6 && horaAtual <= horario)
+            if (horaAtual >= horario6)
             {
                 this.ActiveControl = alimento6;
             }
 
+            InicializaDadosAlimentos();
+
+        }
+
+        private void InicializaDadosAlimentos()
+        {
             List<Alimento> CarbAlimentos = Conexao.GetAlimentos();
             CarbAlimentos.ForEach(objeto =>
             {
@@ -140,7 +159,6 @@ namespace ContagemInsulina
                         break;
                 }
             });
-
         }
     }
 }

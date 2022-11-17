@@ -42,7 +42,6 @@
             this.btnConfig = new System.Windows.Forms.Button();
             this.a = new System.Windows.Forms.Label();
             this.b = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.refeicao = new System.Windows.Forms.Label();
             this.totalAplicar = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -152,12 +151,13 @@
             // 
             // btnConfig
             // 
-            this.btnConfig.Location = new System.Drawing.Point(385, 12);
+            this.btnConfig.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnConfig.Location = new System.Drawing.Point(385, 245);
             this.btnConfig.Name = "btnConfig";
             this.btnConfig.Size = new System.Drawing.Size(48, 24);
             this.btnConfig.TabIndex = 30;
             this.btnConfig.Text = "Config";
-            this.btnConfig.UseVisualStyleBackColor = true;
+            this.btnConfig.UseVisualStyleBackColor = false;
             this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
             // 
             // a
@@ -180,33 +180,25 @@
             this.b.TabIndex = 32;
             this.b.Text = "-";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(385, 42);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(48, 22);
-            this.button1.TabIndex = 33;
-            this.button1.Text = "Teste";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // refeicao
             // 
-            this.refeicao.AutoSize = true;
             this.refeicao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refeicao.Location = new System.Drawing.Point(215, 148);
+            this.refeicao.Location = new System.Drawing.Point(203, 148);
             this.refeicao.Name = "refeicao";
-            this.refeicao.Size = new System.Drawing.Size(22, 16);
+            this.refeicao.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.refeicao.Size = new System.Drawing.Size(100, 24);
             this.refeicao.TabIndex = 34;
             this.refeicao.Text = "---";
+            this.refeicao.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // totalAplicar
             // 
             this.totalAplicar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.totalAplicar.AutoSize = true;
             this.totalAplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalAplicar.Location = new System.Drawing.Point(154, 255);
+            this.totalAplicar.Location = new System.Drawing.Point(84, 252);
             this.totalAplicar.Name = "totalAplicar";
+            this.totalAplicar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.totalAplicar.Size = new System.Drawing.Size(0, 20);
             this.totalAplicar.TabIndex = 35;
             this.totalAplicar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -219,7 +211,6 @@
             this.ClientSize = new System.Drawing.Size(445, 305);
             this.Controls.Add(this.totalAplicar);
             this.Controls.Add(this.refeicao);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.b);
             this.Controls.Add(this.a);
             this.Controls.Add(this.btnConfig);
@@ -259,7 +250,6 @@
         private System.Windows.Forms.Button btnConfig;
         private System.Windows.Forms.Label a;
         private System.Windows.Forms.Label b;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label refeicao;
         private System.Windows.Forms.Label totalAplicar;
     }
