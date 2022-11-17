@@ -92,5 +92,11 @@ namespace ContagemInsulina
             EditAlimentos editAli = new EditAlimentos();
             editAli.ShowDialog();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            InserirGlicemia novaGli = new InserirGlicemia();
+            novaGli.ShowDialog();
+        }
     }
 }

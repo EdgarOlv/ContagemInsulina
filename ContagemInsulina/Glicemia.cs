@@ -29,6 +29,12 @@ namespace ContagemInsulina
             this.data = now2;
         }
 
+        public Glicemia(int valorGlicemia, DateTime data)
+        {
+            this.valor = valorGlicemia;
+            this.data = data;
+        }
+
         public int getValor
         {
             get { return valor; }
