@@ -146,6 +146,7 @@ namespace ContagemInsulina
                     cmd.Parameters.AddWithValue("@valor", glicemia.valor);
                     cmd.Parameters.AddWithValue("@data", glicemia.data);
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show("Registro inserido!");
                 }
             }
             catch (Exception ex)
