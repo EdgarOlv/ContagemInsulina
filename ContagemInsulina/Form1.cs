@@ -64,7 +64,7 @@ namespace ContagemInsulina
   
                     aplicarInsulina.Text += string.Format(" Correção {0:0.0}UI ", qtdCorrecao);
 
-                    //Conexao.Add(glicemia);
+                    Conexao.Add(glicemia);
                     
 
                 }                
