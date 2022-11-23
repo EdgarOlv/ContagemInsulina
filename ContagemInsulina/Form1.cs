@@ -65,7 +65,7 @@ namespace ContagemInsulina
                     aplicarInsulina.Text += string.Format(" Correção {0:0.0}UI ", qtdCorrecao);
 
                     Conexao.Add(glicemia);
-                    MessageBox.Show("Registro inserido!");
+                    
 
                 }                
             }
@@ -77,10 +77,13 @@ namespace ContagemInsulina
                 aplicarInsulina.Text += string.Format(" Alimento {0:0.0}UI ", qtdAlimentacao);
 
             }
+            var checkMalhar = checkBoxMalhar.Checked;
+
+            if (checkMalhar) qtdCorrecao = qtdCorrecao / 2;
 
             totalAplicar.Text = string.Format(" Aplicar: {0:0.0}UI ", qtdCorrecao + qtdAlimentacao);
 
-            if (checkBoxMalhar.Checked)
+            if (checkMalhar)
             {
                 TreinoGym treino = new TreinoGym();
      
@@ -88,7 +91,7 @@ namespace ContagemInsulina
                 totalAplicar.Text += treino.oQueFazer(Convert.ToInt32(glicemiaAtual.Text));
 
             }
-
+            glicemiaAtual.Text = "";
         }
 
         private void checkBoxAlimentar_CheckedChanged(object sender, EventArgs e)
