@@ -11,12 +11,14 @@ namespace ContagemInsulina
     {
         public int id;
         public int valor;
+        private int valor_aplicado;
         public DateTime data;
 
         public Glicemia(DataTable data)
         {
             this.id = Convert.ToInt32(data.Rows[0]["id"]);
             this.valor = Convert.ToInt32(data.Rows[0]["valor"]);
+            this.valor_aplicado = Convert.ToInt32(data.Rows[0]["insulina_aplicada"]);
             this.data = Convert.ToDateTime(data.Rows[0]["data"]);
         }
 
@@ -45,6 +47,7 @@ namespace ContagemInsulina
             get { return data; }
         }
 
+        public int Valor_aplicado { get => valor_aplicado; set => valor_aplicado = value; }
     }
   
 
