@@ -16,10 +16,10 @@ namespace ContagemInsulina
         {
             InitializeComponent();
         }
+        List<Alimento> CarbAlimentos = Conexao.GetAlimentos();
 
         private void EditAlimentos_Load(object sender, EventArgs e)
         {
-            List<Alimento> CarbAlimentos = Conexao.GetAlimentos();
             CarbAlimentos.ForEach(objeto =>
             {
                 switch (Convert.ToInt32(objeto.id))
@@ -49,6 +49,42 @@ namespace ContagemInsulina
                         break;
                 }
             });
+        }
+
+        private void btnCalcular_Click(object sender, EventArgs e)
+        {
+            CarbAlimentos.ForEach(objeto =>
+            {
+                switch (Convert.ToInt32(objeto.id))
+                {
+                    case 6: //F.S.
+                         objeto.qtd_carboidrato = Convert.ToInt32(text1.Text);
+                        break;
+
+                    case 5: //Alvo
+                        objeto.qtd_carboidrato = Convert.ToInt32(text2.Text);
+                        break;
+
+                    case 4: //Carboidrato
+                        objeto.qtd_carboidrato = Convert.ToInt32(text3.Text);
+                        break;
+
+                    case 3: //Carboidrato
+                        objeto.qtd_carboidrato = Convert.ToInt32(text4.Text);
+                        break;
+
+                    case 2: //Carboidrato
+                        objeto.qtd_carboidrato = Convert.ToInt32(text5.Text);
+                        break;
+
+                    case 1: //Carboidrato
+                        objeto.qtd_carboidrato = Convert.ToInt32(text6.Text);
+                        break;
+                }
+            });
+            Conexao.UpdateConfigAlimentos(CarbAlimentos);
+            MessageBox.Show("Atualizado com sucesso!");
+
         }
     }
 }

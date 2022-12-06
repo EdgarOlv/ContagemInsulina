@@ -130,32 +130,32 @@ namespace ContagemInsulina
                 {
                     case 1:
                         valorCarb[0] = objeto.qtd_carboidrato;
-                        nomeAlimentos[0] = objeto.id_nome;
+                        nomeAlimentos[0] = objeto.nome;
                         break;
 
                     case 2:
                         valorCarb[1] = objeto.qtd_carboidrato;
-                        nomeAlimentos[1] = objeto.id_nome;
+                        nomeAlimentos[1] = objeto.nome;
                         break;
 
                     case 3:
                         valorCarb[2] = objeto.qtd_carboidrato;
-                        nomeAlimentos[2] = objeto.id_nome;
+                        nomeAlimentos[2] = objeto.nome;
                         break;
 
                     case 4:
                         valorCarb[3] = objeto.qtd_carboidrato;
-                        nomeAlimentos[3] = objeto.id_nome;
+                        nomeAlimentos[3] = objeto.nome;
                         break;
 
                     case 5:
                         valorCarb[4] = objeto.qtd_carboidrato;
-                        nomeAlimentos[4] = objeto.id_nome;
+                        nomeAlimentos[4] = objeto.nome;
                         break;
 
                     case 6:
                         valorCarb[5] = objeto.qtd_carboidrato;
-                        nomeAlimentos[5] = objeto.id_nome;
+                        nomeAlimentos[5] = objeto.nome;
                         break;
                 }
             });

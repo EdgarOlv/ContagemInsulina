@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ContagemInsulina
@@ -11,8 +12,6 @@ namespace ContagemInsulina
         /*  ISSUES
          * 
          * Configurações:
-         * -Conseguir pegar ulmima leitura (pode esquecer quanto aplicar)
-         * -Poder colocar hora diferente de aferição
          * -Módulo de log, para registrar quanto aplicou e o que fez(alimentou, malhou)
          * -
          * 
@@ -26,13 +25,12 @@ namespace ContagemInsulina
         int valorfs = 0;
         int valorglicemiaAlvo = 0;
         int valorRelacaoCarb = 0;
+        String glicemiaAnterior = "";
         private object sender;
         private EventArgs e;
         int contador = 0;
 
         internal static int qtdCarboidrato { get; set; }
-        //internal static String nomeAlimento { get; set; }
-
 
         public Form1()
         {
@@ -45,53 +43,72 @@ namespace ContagemInsulina
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
+            CalcularAcaoGlicemia(1);
+        }
+
+        private void CalcularAcaoGlicemia(int usaDB)
+        {
             int valorGlicemia = 0;
             float qtdCorrecao = 0;
             float qtdAlimentacao = 0;
 
-            aplicarInsulina.Text = string.Format("Aplicar");
-
-            if (glicemiaAtual.Text != "")
+            try
             {
                 valorGlicemia = Convert.ToInt32(glicemiaAtual.Text);
-    
+            }
+            catch
+            {
+                MessageBox.Show("Insira a glicêmia corretamente!");
+            }
+
+            if (glicemiaAtual.Text != "" || valorGlicemia > 0)
+            {
+
+                aplicarInsulina.Text = string.Format("Aplicar");
+                var checkMalhar = checkBoxMalhar.Checked;
+
                 Glicemia glicemia = new Glicemia(valorGlicemia);
 
                 if (checkBoxCorrecao.Checked)
                 {
 
                     qtdCorrecao = (float)(valorGlicemia - valorglicemiaAlvo) / valorfs;
-  
+
                     aplicarInsulina.Text += string.Format(" Correção {0:0.0}UI ", qtdCorrecao);
 
-                    Conexao.Add(glicemia);
-                    
+                    if (checkMalhar) qtdCorrecao = qtdCorrecao / 2;
 
-                }                
+                }
+
+                if (checkBoxAlimentar.Checked)
+                {
+                    qtdAlimentacao += (float)qtdCarboidrato / valorRelacaoCarb;
+
+                    aplicarInsulina.Text += string.Format(" Alimento {0:0.0}UI ", qtdAlimentacao);
+
+                }
+
+                totalAplicar.Text = string.Format(" Aplicar: {0:0.0}UI ", qtdCorrecao + qtdAlimentacao);
+                glicemia.Valor_aplicado = Convert.ToInt32(qtdCorrecao + qtdAlimentacao);
+
+                if(usaDB == 1) Conexao.Add(glicemia);
+
+                if (checkMalhar)
+                {
+                    TreinoGym treino = new TreinoGym();
+
+                    totalAplicar.Text += string.Format(" e ");
+                    totalAplicar.Text += treino.oQueFazer(Convert.ToInt32(glicemiaAtual.Text));
+
+                }
+
+                glicemiaAtual.Text = string.Format(" Ultima glicemia: {0} ", valorGlicemia);
+                glicemiaAtual.ForeColor = Color.Gray;
             }
-
-            if (checkBoxAlimentar.Checked)
+            else
             {
-                qtdAlimentacao += (float)qtdCarboidrato / valorRelacaoCarb;
-
-                aplicarInsulina.Text += string.Format(" Alimento {0:0.0}UI ", qtdAlimentacao);
-
+                MessageBox.Show("Insira a glicêmia!");
             }
-            var checkMalhar = checkBoxMalhar.Checked;
-
-            if (checkMalhar) qtdCorrecao = qtdCorrecao / 2;
-
-            totalAplicar.Text = string.Format(" Aplicar: {0:0.0}UI ", qtdCorrecao + qtdAlimentacao);
-
-            if (checkMalhar)
-            {
-                TreinoGym treino = new TreinoGym();
-     
-                totalAplicar.Text += string.Format(" e ");
-                totalAplicar.Text += treino.oQueFazer(Convert.ToInt32(glicemiaAtual.Text));
-
-            }
-            glicemiaAtual.Text = "";
         }
 
         private void checkBoxAlimentar_CheckedChanged(object sender, EventArgs e)
@@ -174,7 +191,6 @@ namespace ContagemInsulina
 
         private void CarregarAlimentos()
         {
-            
             if (campoTextoAlimento.nomeAlimento != "")
             {
                 refeicao.Text = campoTextoAlimento.nomeAlimento;
@@ -197,36 +213,27 @@ namespace ContagemInsulina
             }
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            /*
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
-                if (result != DialogResult.Yes)
-                {
-                    e.Cancel = true;
-                }
-            }
-            */
-        }
-
         public void ExibirNomeAlimento()
         {
-            //MessageBox.Show(Convert.ToString(qtdCarboidrato));
-           // MessageBox.Show(Convert.ToString(campoTextoAlimento.nomeAlimento));
             refeicao.Text = campoTextoAlimento.nomeAlimento;
         }
-
 
         public static class campoTextoAlimento
         {
             public static string nomeAlimento { get; set; }
 
         }
-        protected static void reiniciar()
+
+        private void button1_Click(object sender, EventArgs e)
         {
-            
+            CalcularAcaoGlicemia(0);
         }
+
+        private void glicemiaAtual_Enter(object sender, EventArgs e)
+        {
+            glicemiaAtual.Text = "";
+            glicemiaAtual.ForeColor = Color.Black;
+        }
+
     }
 }

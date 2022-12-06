@@ -44,6 +44,7 @@
             this.b = new System.Windows.Forms.Label();
             this.refeicao = new System.Windows.Forms.Label();
             this.totalAplicar = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // resultConsulta
@@ -84,6 +85,7 @@
             this.glicemiaAtual.Name = "glicemiaAtual";
             this.glicemiaAtual.Size = new System.Drawing.Size(138, 22);
             this.glicemiaAtual.TabIndex = 0;
+            this.glicemiaAtual.Enter += new System.EventHandler(this.glicemiaAtual_Enter);
             this.glicemiaAtual.KeyDown += new System.Windows.Forms.KeyEventHandler(this.glicemiaAtual_KeyDown);
             // 
             // label1
@@ -144,9 +146,9 @@
             this.checkBoxMalhar.AutoSize = true;
             this.checkBoxMalhar.Location = new System.Drawing.Point(283, 128);
             this.checkBoxMalhar.Name = "checkBoxMalhar";
-            this.checkBoxMalhar.Size = new System.Drawing.Size(58, 17);
+            this.checkBoxMalhar.Size = new System.Drawing.Size(59, 17);
             this.checkBoxMalhar.TabIndex = 29;
-            this.checkBoxMalhar.Text = "Malhar";
+            this.checkBoxMalhar.Text = "Treinar";
             this.checkBoxMalhar.UseVisualStyleBackColor = true;
             // 
             // btnConfig
@@ -157,6 +159,8 @@
             this.btnConfig.Size = new System.Drawing.Size(48, 24);
             this.btnConfig.TabIndex = 30;
             this.btnConfig.Text = "Config";
+            this.btnConfig.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnConfig.UseCompatibleTextRendering = true;
             this.btnConfig.UseVisualStyleBackColor = false;
             this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
             // 
@@ -203,12 +207,23 @@
             this.totalAplicar.TabIndex = 35;
             this.totalAplicar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(385, 218);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(48, 22);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "S/DB";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(445, 305);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.totalAplicar);
             this.Controls.Add(this.refeicao);
             this.Controls.Add(this.b);
@@ -226,10 +241,10 @@
             this.Controls.Add(this.resultConsulta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculo de Insulina";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -252,6 +267,7 @@
         private System.Windows.Forms.Label b;
         private System.Windows.Forms.Label refeicao;
         private System.Windows.Forms.Label totalAplicar;
+        private System.Windows.Forms.Button button1;
     }
 }
 

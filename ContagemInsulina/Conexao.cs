@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Data;
 using System.Windows;
+using System.IO;
 
 namespace ContagemInsulina
 {
@@ -81,6 +82,25 @@ namespace ContagemInsulina
                 throw ex;
             }
         }
+        public static String GetLastGlicemia()
+        {
+            SQLiteDataAdapter da = null;
+            DataTable dt = new DataTable();
+            try
+            {
+                using (var cmd = DbConnection().CreateCommand())
+                {
+                    cmd.CommandText = "SELECT valor FROM glicemias ORDER BY id DESC LIMIT 1";
+                    da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    da.Fill(dt);
+                    return Convert.ToString(dt.Rows[0]["valor"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         
         public static List<Config> GetConfigAll()
         {
@@ -141,10 +161,11 @@ namespace ContagemInsulina
             {
                 using (var cmd = DbConnection().CreateCommand())
                 {
-                    cmd.CommandText = "INSERT INTO glicemias( valor, data ) values (@valor, @data)";
+                    cmd.CommandText = "INSERT INTO glicemias( valor, data, insulina_aplicada ) values (@valor, @data, @valorAplicado)";
                     //cmd.Parameters.AddWithValue("@id", glicemia.id);
                     cmd.Parameters.AddWithValue("@valor", glicemia.valor);
                     cmd.Parameters.AddWithValue("@data", glicemia.data);
+                    cmd.Parameters.AddWithValue("@valorAplicado", glicemia.Valor_aplicado);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Registro inserido!");
                 }
@@ -187,6 +208,63 @@ namespace ContagemInsulina
                         cmd.Parameters.AddWithValue("@id", idCampo);
                         cmd.Parameters.AddWithValue("@valor", valorCampo);
                         cmd.ExecuteNonQuery();
+                    }
+                };
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void UpdateConfigAlimentos(List<Alimento> alimentos)
+        {
+            try
+            {
+                using (var cmd = new SQLiteCommand(DbConnection()))
+                {
+                    if (alimentos != null)
+                    {
+                        alimentos.ForEach(objeto =>
+                        {
+                            switch (Convert.ToInt32(objeto.id))
+                            {
+                                case 6: //F.S.
+                                    cmd.CommandText = "UPDATE alimentos SET qtd_carboidrato=@valor WHERE id_nome=@id_nome";
+                                    cmd.Parameters.AddWithValue("@id_nome", Convert.ToString(objeto.id_nome));
+                                    cmd.Parameters.AddWithValue("@valor", Convert.ToString(objeto.qtd_carboidrato));
+                                    cmd.ExecuteNonQuery(); break;
+                                    
+                                case 5: //Alvo
+                                    cmd.CommandText = "UPDATE alimentos SET qtd_carboidrato=@valor WHERE id_nome=@id_nome";
+                                    cmd.Parameters.AddWithValue("@id_nome", Convert.ToString(objeto.id_nome));
+                                    cmd.Parameters.AddWithValue("@valor", Convert.ToString(objeto.qtd_carboidrato));
+                                    cmd.ExecuteNonQuery(); break;
+
+                                case 4: //Carboidrato
+                                    cmd.CommandText = "UPDATE alimentos SET qtd_carboidrato=@valor WHERE id_nome=@id_nome";
+                                    cmd.Parameters.AddWithValue("@id_nome", Convert.ToString(objeto.id_nome));
+                                    cmd.Parameters.AddWithValue("@valor", Convert.ToString(objeto.qtd_carboidrato));
+                                    cmd.ExecuteNonQuery(); break;
+
+                                case 3: //Carboidrato
+                                    cmd.CommandText = "UPDATE alimentos SET qtd_carboidrato=@valor WHERE id_nome=@id_nome";
+                                    cmd.Parameters.AddWithValue("@id_nome", Convert.ToString(objeto.id_nome));
+                                    cmd.Parameters.AddWithValue("@valor", Convert.ToString(objeto.qtd_carboidrato));
+                                    cmd.ExecuteNonQuery(); break;
+
+                                case 2: //Carboidrato
+                                    cmd.CommandText = "UPDATE alimentos SET qtd_carboidrato=@valor WHERE id_nome=@id_nome";
+                                    cmd.Parameters.AddWithValue("@id_nome", Convert.ToString(objeto.id_nome));
+                                    cmd.Parameters.AddWithValue("@valor", Convert.ToString(objeto.qtd_carboidrato));
+                                    cmd.ExecuteNonQuery(); break;
+
+                                case 1: //Carboidrato
+                                    cmd.CommandText = "UPDATE alimentos SET qtd_carboidrato=@valor WHERE id_nome=@id_nome";
+                                    cmd.Parameters.AddWithValue("@id_nome", Convert.ToString(objeto.id_nome));
+                                    cmd.Parameters.AddWithValue("@valor", Convert.ToString(objeto.qtd_carboidrato));
+                                    cmd.ExecuteNonQuery(); break;
+                            }
+                        });
                     }
                 };
             }

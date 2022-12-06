@@ -88,6 +88,7 @@
             this.btnCalcular.TabIndex = 40;
             this.btnCalcular.Text = "Salvar";
             this.btnCalcular.UseVisualStyleBackColor = true;
+            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
             // label9
             // 
