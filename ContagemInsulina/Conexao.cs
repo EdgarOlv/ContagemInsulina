@@ -7,6 +7,8 @@ using System.Data.SQLite;
 using System.Data;
 using System.Windows;
 using System.IO;
+using System.Windows.Forms;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace ContagemInsulina
 {
@@ -161,13 +163,21 @@ namespace ContagemInsulina
             {
                 using (var cmd = DbConnection().CreateCommand())
                 {
+                    
                     cmd.CommandText = "INSERT INTO glicemias( valor, data, insulina_aplicada ) values (@valor, @data, @valorAplicado)";
-                    //cmd.Parameters.AddWithValue("@id", glicemia.id);
                     cmd.Parameters.AddWithValue("@valor", glicemia.valor);
                     cmd.Parameters.AddWithValue("@data", glicemia.data);
                     cmd.Parameters.AddWithValue("@valorAplicado", glicemia.Valor_aplicado);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Registro inserido!");
+                    
+                    var textDialog = "Registro inserido com sucesso!\nGostaria de inserir uma observação?";
+                    DialogResult dialogResult = MessageBox.Show(textDialog, "Glicemia coletada", MessageBoxButtons.YesNo, MessageBoxIcon.Question,MessageBoxDefaultButton.Button1);
+                   
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        Observacao obs = new Observacao(glicemia);
+                        obs.ShowDialog();
+                    }
                 }
             }
             catch (Exception ex)
@@ -175,6 +185,27 @@ namespace ContagemInsulina
                 throw ex;
             }
         }
+
+        public static void InsertComentario(String obs)
+        {
+            try
+            {
+                using (var cmd = new SQLiteCommand(DbConnection()))
+                {
+                
+                        cmd.CommandText = "UPDATE glicemias SET obs=@obs WHERE id=(SELECT id FROM glicemias ORDER BY data DESC limit 1)";
+                        cmd.Parameters.AddWithValue("@obs", obs);
+                        cmd.ExecuteNonQuery();
+                    
+                };
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         public static void Update(Glicemia glicemia)
         {
             try
@@ -196,6 +227,8 @@ namespace ContagemInsulina
                 throw ex;
             }
         }
+        
+
         public static void UpdateConfig(int idCampo, int valorCampo)
         {
             try

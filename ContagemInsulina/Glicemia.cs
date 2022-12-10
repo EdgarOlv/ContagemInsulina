@@ -11,7 +11,7 @@ namespace ContagemInsulina
     {
         public int id;
         public int valor;
-        private int valor_aplicado;
+        public int valor_aplicado;
         public DateTime data;
 
         public Glicemia(DataTable data)
