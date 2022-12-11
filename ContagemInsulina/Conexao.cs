@@ -104,7 +104,7 @@ namespace ContagemInsulina
             }
         }
         
-        public static List<Config> GetConfigAll()
+        public static List<Configuracao> GetConfigAll()
         {
 
             SQLiteDataAdapter da = null;
@@ -116,10 +116,10 @@ namespace ContagemInsulina
                     cmd.CommandText = "SELECT * FROM config";
                     da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
-                    var listConfig = new List<Config>();
+                    var listConfig = new List<Configuracao>();
                     foreach (DataRow row in dt.Rows)
                     {
-                        var config = new Config(Convert.ToInt32(row["id"]), Convert.ToString(row["nome"]), Convert.ToInt32(row["valor"]));
+                        var config = new Configuracao(Convert.ToInt32(row["id"]), Convert.ToString(row["nome"]), Convert.ToInt32(row["valor"]));
                         listConfig.Add(config);
                     }
 
@@ -171,7 +171,7 @@ namespace ContagemInsulina
                     cmd.ExecuteNonQuery();
                     
                     var textDialog = "Registro inserido com sucesso!\nGostaria de inserir uma observação?";
-                    DialogResult dialogResult = MessageBox.Show(textDialog, "Glicemia coletada", MessageBoxButtons.YesNo, MessageBoxIcon.Question,MessageBoxDefaultButton.Button1);
+                    DialogResult dialogResult = MessageBox.Show(textDialog, "Glicemia coletada", MessageBoxButtons.YesNo, MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
                    
                     if (dialogResult == DialogResult.Yes)
                     {

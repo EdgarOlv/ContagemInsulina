@@ -35,6 +35,7 @@ namespace ContagemInsulina
 
         private void Config_Load(object sender, EventArgs e)
         {
+            /*
             ListConfig = Conexao.GetConfigAll();
             ListConfig.ForEach(objeto =>
             {
@@ -52,7 +53,7 @@ namespace ContagemInsulina
                         carb.Text = Convert.ToString(objeto.valor);
                         break;
                 }
-            });
+            });*/
         }
 
 

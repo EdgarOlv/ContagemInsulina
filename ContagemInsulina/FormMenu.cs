@@ -83,7 +83,27 @@ namespace ContagemInsulina
         private void btnConfig_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 1;
+            List<Configuracao> configs = new List<Configuracao>();
+            Configuracao configuracao = new Configuracao();
+            configs =  configuracao.Load_config();
 
+            configs.ForEach(objeto =>
+            {
+                switch (Convert.ToInt32(objeto.id))
+                {
+                    case 1: //F.S.
+                        fs.Text = Convert.ToString(objeto.valor);
+                        break;
+
+                    case 2: //Alvo
+                        glicemiaAlvo.Text = Convert.ToString(objeto.valor);
+                        break;
+
+                    case 3: //Carboidrato
+                        carb.Text = Convert.ToString(objeto.valor);
+                        break;
+                }
+            });
             //Criar classe config nova e popular campos
 
         }
@@ -167,7 +187,7 @@ namespace ContagemInsulina
 
         private void CarregarConfiguracoes()
         {
-            List<Config> ListConfig = Conexao.GetConfigAll();
+            List<Configuracao> ListConfig = Conexao.GetConfigAll();
 
             ListConfig.ForEach(objeto =>
             {
@@ -295,5 +315,23 @@ namespace ContagemInsulina
             }
         }
 
+        //=============================== CONFIGURAÇÕES
+
+        private void btnAbrirCarboidratos_Click(object sender, EventArgs e)
+        {
+            EditAlimentos editAli = new EditAlimentos();
+            editAli.ShowDialog();
+        }
+
+        private void btnInserirGlicose_Click(object sender, EventArgs e)
+        {
+            InserirGlicemia novaGli = new InserirGlicemia();
+            novaGli.ShowDialog();
+        }
+
+        private void salvarConfig_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -105,6 +105,7 @@
     <Compile Include="Config.Designer.cs">
       <DependentUpon>Config.cs</DependentUpon>
     </Compile>
+    <Compile Include="Configuracao.cs" />
     <Compile Include="EditAlimentos.cs">
       <SubType>Form</SubType>
     </Compile>

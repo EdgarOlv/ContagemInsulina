@@ -22,6 +22,24 @@ Contagem de insulina trata de um software para auxiliar na correcao, contagem de
 
 - Edgar Oliveira Cardoso
 
+### Versoes
+
+> Versao 1.0
+> Versao inicial, contando com as funcionalidades ativas e garantindo um controle eficaz da glicemia
+
+Imagens:
+
+![](assets/V1/Tela1.png)
+
+---
+
+> Versao 2.0
+> Design estruturado, módulo de relatório adicionado, e modelo unique page com navegação lateral
+
+Imagens:
+
+![](assets/V2/Tela1.png)
+
 ### Diagramas representando a funcionalidade do sistema:
 
 Fluxograma
@@ -31,12 +49,3 @@ Fluxograma
 Diagrama de Caso de Uso
 
 ![](assets/DiagramaCasoDeUso.png)
-
-### Versoes
-
-> Versao 1.0
-> Versao inicial, contando com as funcionalidades ativas e garantindo um controle eficaz da glicemia
-
-Imagens:
-
-![](assets/V1/Tela1.png)
