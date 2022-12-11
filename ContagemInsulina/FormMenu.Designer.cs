@@ -54,9 +54,9 @@
             this.glicemiaAtual = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAbrirCarboidratos = new System.Windows.Forms.Button();
             this.salvarConfig = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnInserirGlicose = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.carb = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -223,7 +223,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl1.ItemSize = new System.Drawing.Size(58, 10);
+            this.tabControl1.ItemSize = new System.Drawing.Size(58, 5);
             this.tabControl1.Location = new System.Drawing.Point(0, -1);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -245,10 +245,10 @@
             this.tabPage1.Controls.Add(this.checkBoxCorrecao);
             this.tabPage1.Controls.Add(this.glicemiaAtual);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 14);
+            this.tabPage1.Location = new System.Drawing.Point(4, 9);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(456, 323);
+            this.tabPage1.Size = new System.Drawing.Size(456, 328);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -258,7 +258,7 @@
             this.totalAplicar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.totalAplicar.AutoSize = true;
             this.totalAplicar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.totalAplicar.Location = new System.Drawing.Point(89, 280);
+            this.totalAplicar.Location = new System.Drawing.Point(89, 283);
             this.totalAplicar.Name = "totalAplicar";
             this.totalAplicar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.totalAplicar.Size = new System.Drawing.Size(0, 21);
@@ -388,35 +388,36 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.btnAbrirCarboidratos);
             this.tabPage2.Controls.Add(this.salvarConfig);
-            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.btnInserirGlicose);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.carb);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.glicemiaAlvo);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.fs);
-            this.tabPage2.Location = new System.Drawing.Point(4, 14);
+            this.tabPage2.Location = new System.Drawing.Point(4, 9);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(456, 323);
+            this.tabPage2.Size = new System.Drawing.Size(456, 328);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnAbrirCarboidratos
             // 
-            this.button2.BackColor = System.Drawing.Color.GhostWhite;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(332, 236);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(108, 51);
-            this.button2.TabIndex = 46;
-            this.button2.Text = "Config. Carboidratos";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnAbrirCarboidratos.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnAbrirCarboidratos.FlatAppearance.BorderSize = 0;
+            this.btnAbrirCarboidratos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirCarboidratos.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAbrirCarboidratos.Location = new System.Drawing.Point(332, 236);
+            this.btnAbrirCarboidratos.Name = "btnAbrirCarboidratos";
+            this.btnAbrirCarboidratos.Size = new System.Drawing.Size(108, 51);
+            this.btnAbrirCarboidratos.TabIndex = 46;
+            this.btnAbrirCarboidratos.Text = "Config. Carboidratos";
+            this.btnAbrirCarboidratos.UseVisualStyleBackColor = false;
+            this.btnAbrirCarboidratos.Click += new System.EventHandler(this.btnAbrirCarboidratos_Click);
             // 
             // salvarConfig
             // 
@@ -431,19 +432,21 @@
             this.salvarConfig.TabIndex = 45;
             this.salvarConfig.Text = "Salvar Configurações";
             this.salvarConfig.UseVisualStyleBackColor = false;
+            this.salvarConfig.Click += new System.EventHandler(this.salvarConfig_Click);
             // 
-            // button1
+            // btnInserirGlicose
             // 
-            this.button1.BackColor = System.Drawing.Color.GhostWhite;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(22, 236);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 51);
-            this.button1.TabIndex = 44;
-            this.button1.Text = "Inserir glicose";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnInserirGlicose.BackColor = System.Drawing.Color.GhostWhite;
+            this.btnInserirGlicose.FlatAppearance.BorderSize = 0;
+            this.btnInserirGlicose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInserirGlicose.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnInserirGlicose.Location = new System.Drawing.Point(22, 236);
+            this.btnInserirGlicose.Name = "btnInserirGlicose";
+            this.btnInserirGlicose.Size = new System.Drawing.Size(112, 51);
+            this.btnInserirGlicose.TabIndex = 44;
+            this.btnInserirGlicose.Text = "Inserir glicose";
+            this.btnInserirGlicose.UseVisualStyleBackColor = false;
+            this.btnInserirGlicose.Click += new System.EventHandler(this.btnInserirGlicose_Click);
             // 
             // label3
             // 
@@ -502,10 +505,10 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.label4);
-            this.tabPage3.Location = new System.Drawing.Point(4, 14);
+            this.tabPage3.Location = new System.Drawing.Point(4, 9);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(456, 323);
+            this.tabPage3.Size = new System.Drawing.Size(456, 328);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -513,11 +516,12 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(292, 104);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(73, 57);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(341, 20);
             this.label4.TabIndex = 0;
-            this.label4.Text = "label4";
+            this.label4.Text = "Módulo de Relatório: == Em Desenolvimento==";
             // 
             // FormMenu
             // 
@@ -582,8 +586,8 @@
         private System.Windows.Forms.TextBox glicemiaAlvo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox fs;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnInserirGlicose;
+        private System.Windows.Forms.Button btnAbrirCarboidratos;
         private System.Windows.Forms.Button salvarConfig;
     }
 }
