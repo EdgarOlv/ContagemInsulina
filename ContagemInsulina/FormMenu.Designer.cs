@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenu));
             this.panelCabecalho = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnRestaurar = new System.Windows.Forms.Button();
-            this.btnMaximizar = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnRelatorio = new System.Windows.Forms.Button();
@@ -64,6 +62,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.fs = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.panelCabecalho.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -72,14 +71,13 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelCabecalho
             // 
             this.panelCabecalho.BackColor = System.Drawing.Color.DodgerBlue;
             this.panelCabecalho.Controls.Add(this.label1);
-            this.panelCabecalho.Controls.Add(this.btnRestaurar);
-            this.panelCabecalho.Controls.Add(this.btnMaximizar);
             this.panelCabecalho.Controls.Add(this.btnFechar);
             this.panelCabecalho.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCabecalho.Location = new System.Drawing.Point(0, 0);
@@ -98,36 +96,6 @@
             this.label1.Size = new System.Drawing.Size(228, 30);
             this.label1.TabIndex = 1;
             this.label1.Text = "Contagem de Insulina";
-            // 
-            // btnRestaurar
-            // 
-            this.btnRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRestaurar.FlatAppearance.BorderSize = 0;
-            this.btnRestaurar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnRestaurar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.btnRestaurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRestaurar.Image = ((System.Drawing.Image)(resources.GetObject("btnRestaurar.Image")));
-            this.btnRestaurar.Location = new System.Drawing.Point(473, 3);
-            this.btnRestaurar.Name = "btnRestaurar";
-            this.btnRestaurar.Size = new System.Drawing.Size(40, 34);
-            this.btnRestaurar.TabIndex = 0;
-            this.btnRestaurar.UseVisualStyleBackColor = true;
-            this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximizar.FlatAppearance.BorderSize = 0;
-            this.btnMaximizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnMaximizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.btnMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(519, 3);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(40, 34);
-            this.btnMaximizar.TabIndex = 0;
-            this.btnMaximizar.UseVisualStyleBackColor = true;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
             // 
             // btnFechar
             // 
@@ -223,7 +191,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl1.ItemSize = new System.Drawing.Size(58, 5);
+            this.tabControl1.ItemSize = new System.Drawing.Size(58, 1);
             this.tabControl1.Location = new System.Drawing.Point(0, -1);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -245,10 +213,10 @@
             this.tabPage1.Controls.Add(this.checkBoxCorrecao);
             this.tabPage1.Controls.Add(this.glicemiaAtual);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 9);
+            this.tabPage1.Location = new System.Drawing.Point(4, 5);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(456, 328);
+            this.tabPage1.Size = new System.Drawing.Size(456, 332);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -258,7 +226,7 @@
             this.totalAplicar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.totalAplicar.AutoSize = true;
             this.totalAplicar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.totalAplicar.Location = new System.Drawing.Point(89, 283);
+            this.totalAplicar.Location = new System.Drawing.Point(89, 285);
             this.totalAplicar.Name = "totalAplicar";
             this.totalAplicar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.totalAplicar.Size = new System.Drawing.Size(0, 21);
@@ -504,6 +472,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.dataGridView1);
             this.tabPage3.Controls.Add(this.label4);
             this.tabPage3.Location = new System.Drawing.Point(4, 9);
             this.tabPage3.Name = "tabPage3";
@@ -513,11 +482,19 @@
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(16, 47);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(423, 263);
+            this.dataGridView1.TabIndex = 1;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(73, 57);
+            this.label4.Location = new System.Drawing.Point(62, 14);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(341, 20);
             this.label4.TabIndex = 0;
@@ -532,9 +509,10 @@
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelCabecalho);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Contagem de Insulina";
             this.Load += new System.EventHandler(this.FormMenu_Load_1);
             this.panelCabecalho.ResumeLayout(false);
             this.panelCabecalho.PerformLayout();
@@ -547,6 +525,7 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -554,8 +533,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panelCabecalho;
-        private System.Windows.Forms.Button btnRestaurar;
-        private System.Windows.Forms.Button btnMaximizar;
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Button btnConfig;
@@ -589,6 +566,7 @@
         private System.Windows.Forms.Button btnInserirGlicose;
         private System.Windows.Forms.Button btnAbrirCarboidratos;
         private System.Windows.Forms.Button salvarConfig;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

@@ -65,7 +65,7 @@ namespace ContagemInsulina
                 throw ex;
             }
         }
-        public static DataTable GetGlicemia(int id)
+        public static DataTable GetGlicemias()
         {
             SQLiteDataAdapter da = null;
             DataTable dt = new DataTable();
@@ -73,7 +73,7 @@ namespace ContagemInsulina
             {
                 using (var cmd = DbConnection().CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM glicemias Where id= " + id;
+                    cmd.CommandText = "SELECT valor, data, insulina_aplicada FROM glicemias ORDER BY id desc";
                     da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
                     return dt;
