@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -11,6 +12,7 @@ namespace ContagemInsulina
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
+        List<Configuracao> configs;
 
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -48,19 +50,6 @@ namespace ContagemInsulina
             }
         }
 
-        private void btnRestaurar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Normal;
-            btnRestaurar.Visible = false;
-            btnMaximizar.Visible = true;
-        }
-
-        private void btnMaximizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized;
-            btnRestaurar.Visible = true;
-        }
-
         private void btnFechar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -83,7 +72,7 @@ namespace ContagemInsulina
         private void btnConfig_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 1;
-            List<Configuracao> configs = new List<Configuracao>();
+            configs = new List<Configuracao>();
             Configuracao configuracao = new Configuracao();
             configs =  configuracao.Load_config();
 
@@ -111,7 +100,9 @@ namespace ContagemInsulina
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 2;
-
+            DataTable dt = new DataTable();
+            dt = Conexao.GetGlicemias();
+            dataGridView1.DataSource = dt;
         }
 
         //===============================================================================
@@ -331,7 +322,24 @@ namespace ContagemInsulina
 
         private void salvarConfig_Click(object sender, EventArgs e)
         {
+            configs.ForEach(objeto =>
+            {
+                switch (Convert.ToInt32(objeto.id))
+                {
+                    case 1: //F.S.
+                        Conexao.UpdateConfig(Convert.ToInt32(objeto.id), Convert.ToInt32(fs.Text));
+                        break;
 
+                    case 2: //Alvo
+                        Conexao.UpdateConfig(Convert.ToInt32(objeto.id), Convert.ToInt32(glicemiaAlvo.Text));
+                        break;
+
+                    case 3: //Carboidrato
+                        Conexao.UpdateConfig(Convert.ToInt32(objeto.id), Convert.ToInt32(carb.Text));
+                        break;
+                }
+            });
+            MessageBox.Show("Atualizado com sucesso!");
         }
     }
 }
