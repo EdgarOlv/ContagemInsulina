@@ -73,7 +73,7 @@ namespace ContagemInsulina
             {
                 using (var cmd = DbConnection().CreateCommand())
                 {
-                    cmd.CommandText = "SELECT valor, data, insulina_aplicada FROM glicemias ORDER BY id desc";
+                    cmd.CommandText = "SELECT valor, data, insulina_aplicada,obs FROM glicemias ORDER BY id desc";
                     da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
                     return dt;

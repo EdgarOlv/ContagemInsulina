@@ -34,6 +34,8 @@
             this.alimento3 = new System.Windows.Forms.Button();
             this.alimento4 = new System.Windows.Forms.Button();
             this.alimento5 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.alimentoPersonalizado = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // alimento1
@@ -96,22 +98,49 @@
             this.alimento5.UseVisualStyleBackColor = true;
             this.alimento5.Click += new System.EventHandler(this.alimento5_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(90, 129);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(182, 36);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "         Personalizado(g)";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // alimentoPersonalizado
+            // 
+            this.alimentoPersonalizado.Location = new System.Drawing.Point(208, 137);
+            this.alimentoPersonalizado.Name = "alimentoPersonalizado";
+            this.alimentoPersonalizado.Size = new System.Drawing.Size(36, 20);
+            this.alimentoPersonalizado.TabIndex = 4;
+            this.alimentoPersonalizado.Text = "0";
+            // 
             // Alimentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 144);
+            this.ClientSize = new System.Drawing.Size(373, 196);
+            this.ControlBox = false;
+            this.Controls.Add(this.alimentoPersonalizado);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.alimento3);
             this.Controls.Add(this.alimento4);
             this.Controls.Add(this.alimento5);
             this.Controls.Add(this.alimento6);
             this.Controls.Add(this.alimento2);
             this.Controls.Add(this.alimento1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Alimentos";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alimentos";
             this.Load += new System.EventHandler(this.Alimentos_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -123,5 +152,7 @@
         private System.Windows.Forms.Button alimento3;
         private System.Windows.Forms.Button alimento4;
         private System.Windows.Forms.Button alimento5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox alimentoPersonalizado;
     }
 }

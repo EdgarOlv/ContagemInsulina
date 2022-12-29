@@ -191,7 +191,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl1.ItemSize = new System.Drawing.Size(58, 1);
+            this.tabControl1.ItemSize = new System.Drawing.Size(58, 5);
             this.tabControl1.Location = new System.Drawing.Point(0, -1);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -213,10 +213,10 @@
             this.tabPage1.Controls.Add(this.checkBoxCorrecao);
             this.tabPage1.Controls.Add(this.glicemiaAtual);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 5);
+            this.tabPage1.Location = new System.Drawing.Point(4, 9);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(456, 332);
+            this.tabPage1.Size = new System.Drawing.Size(456, 328);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -226,7 +226,7 @@
             this.totalAplicar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.totalAplicar.AutoSize = true;
             this.totalAplicar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.totalAplicar.Location = new System.Drawing.Point(89, 285);
+            this.totalAplicar.Location = new System.Drawing.Point(89, 283);
             this.totalAplicar.Name = "totalAplicar";
             this.totalAplicar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.totalAplicar.Size = new System.Drawing.Size(0, 21);
@@ -365,10 +365,10 @@
             this.tabPage2.Controls.Add(this.glicemiaAlvo);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.fs);
-            this.tabPage2.Location = new System.Drawing.Point(4, 9);
+            this.tabPage2.Location = new System.Drawing.Point(4, 5);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(456, 328);
+            this.tabPage2.Size = new System.Drawing.Size(456, 332);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -474,10 +474,10 @@
             // 
             this.tabPage3.Controls.Add(this.dataGridView1);
             this.tabPage3.Controls.Add(this.label4);
-            this.tabPage3.Location = new System.Drawing.Point(4, 9);
+            this.tabPage3.Location = new System.Drawing.Point(4, 5);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(456, 328);
+            this.tabPage3.Size = new System.Drawing.Size(456, 332);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;

@@ -14,7 +14,17 @@ namespace ContagemInsulina
     {
         int[] valorCarb = new int[10];
         String[] nomeAlimentos = new String[10];
-        FormMenu FormMenu;  
+        FormMenu FormMenu;
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var valorCampo = Convert.ToInt32(alimentoPersonalizado.Text);
+            FormMenu.qtdCarboidrato = valorCampo;
+            FormMenu.campoTextoAlimento.nomeAlimento = string.Format(" Alimento {0:0}g ", valorCampo);
+            this.FormMenu.ExibirNomeAlimento();
+            this.Hide();
+        }
 
         public void alimento6_Click(object sender, EventArgs e)
         {
