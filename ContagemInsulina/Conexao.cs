@@ -32,6 +32,38 @@ namespace ContagemInsulina
             sqliteConnection.Open();
             return sqliteConnection;
         }
+
+        /* Provavel tratamento para DB se n existir - Com bug ainda
+         if (!System.IO.File.Exists(@"C:\DbContagemInsulina\CalcInsulina.db"))
+            {
+                Console.WriteLine("Just entered to create Sync DB");
+                SQLiteConnection.CreateFile(@"C:\DbContagemInsulina\CalcInsulina.db");
+
+                using (var sqlite2 = new SQLiteConnection(@"Data Source=C:\DbContagemInsulina\CalcInsulina.db"))
+                {
+                    sqlite2.Open();
+                    string sql = "CREATE TABLE IF NOT EXISTS glicemias (id INTEGER PRIMARY KEY AUTOINCREMENT,valor INTEGER,data DATETIME,insulina_aplicada INTEGER,obs VARCHAR (200))";
+                    SQLiteCommand command = new SQLiteCommand(sql, sqlite2);
+
+                    string sql2 = "CREATE TABLE IF NOT EXISTS config (id INTEGER PRIMARY KEY AUTOINCREMENT,nome VARCHAR (100), valor INTEGER)";
+                    SQLiteCommand command2 = new SQLiteCommand(sql2, sqlite2);
+
+                    string sql3 =  "CREATE TABLE IF NOT EXISTS alimentos (id INTEGER PRIMARY KEY AUTOINCREMENT,id_nome VARCHAR (100),nome VARCHAR (200),qtd_carboidrato INTEGER)";
+                    SQLiteCommand command3 = new SQLiteCommand(sql3, sqlite2);
+
+                    command.ExecuteNonQuery();
+                    command2.ExecuteNonQuery();
+                    command3.ExecuteNonQuery();
+                    return sqlite2;
+                }
+            }
+            else
+            {
+                sqliteConnection = new SQLiteConnection("Data Source=C:\\DbContagemInsulina\\CalcInsulina.db");
+                sqliteConnection.Open();
+                return sqliteConnection;
+            }
+         */
         public static void CriarBancoSQLite()
         {
             try
@@ -65,7 +97,7 @@ namespace ContagemInsulina
                 throw ex;
             }
         }
-        public static DataTable GetGlicemias()
+        public static DataTable GetGlicemias(DateTime dateStartVar, DateTime dateFinishVar)
         {
             SQLiteDataAdapter da = null;
             DataTable dt = new DataTable();
@@ -73,8 +105,9 @@ namespace ContagemInsulina
             {
                 using (var cmd = DbConnection().CreateCommand())
                 {
-                    cmd.CommandText = "SELECT valor, data, insulina_aplicada,obs FROM glicemias ORDER BY id desc";
-                    da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    cmd.CommandText = "SELECT valor, data, insulina_aplicada,obs FROM glicemias WHERE data between '"+ dateStartVar.ToString("yyyy-MM-dd hh:mm:ss") + "' and '" + dateFinishVar.ToString("yyyy-MM-dd hh:mm:ss") + "' ORDER BY id desc";
+                    //MessageBox.Show(cmd.CommandText);
+                    da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());                    
                     da.Fill(dt);
                     return dt;
                 }

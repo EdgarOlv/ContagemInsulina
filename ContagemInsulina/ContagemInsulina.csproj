@@ -72,6 +72,7 @@
     </Reference>
     <Reference Include="System.Design" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />

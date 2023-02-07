@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace ContagemInsulina
 {
@@ -13,6 +14,7 @@ namespace ContagemInsulina
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
         List<Configuracao> configs;
+        public bool setRelatorio = false;
 
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -26,8 +28,11 @@ namespace ContagemInsulina
             glicemiaAtual.Focus();
             checkBoxCorrecao.Checked = true;
             checkBoxAlimentar.Checked = true;
-        }
 
+            dateStartFilter.Value = DateTime.Now.AddDays(-10);
+            dateFinishFilter.Value = DateTime.Now.AddDays(1);
+        }
+        /*
         private void AbrirFormNoPanel<Forms>() where Forms : Form, new()
         {
             Form formulario;
@@ -49,7 +54,7 @@ namespace ContagemInsulina
                 formulario.BringToFront();
             }
         }
-
+        */
         private void btnFechar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -67,6 +72,7 @@ namespace ContagemInsulina
         private void btnGlicemia_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 0;
+            setRelatorio = false;
         }
 
         private void btnConfig_Click(object sender, EventArgs e)
@@ -93,6 +99,7 @@ namespace ContagemInsulina
                         break;
                 }
             });
+            setRelatorio = false;
             //Criar classe config nova e popular campos
 
         }
@@ -101,8 +108,15 @@ namespace ContagemInsulina
         {
             tabControl1.SelectedIndex = 2;
             DataTable dt = new DataTable();
-            dt = Conexao.GetGlicemias();
+            dt = Conexao.GetGlicemias(dateStartFilter.Value, dateFinishFilter.Value);
             dataGridView1.DataSource = dt;
+
+            chart1.DataSource = dt;
+            chart1.Series[0].YValueMembers = "valor";
+            chart1.Series[0].XValueMember = "data";
+            chart1.DataBind();
+            setRelatorio = true;
+            
         }
 
         //===============================================================================
@@ -341,5 +355,84 @@ namespace ContagemInsulina
             });
             MessageBox.Show("Atualizado com sucesso!");
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateFinishFilter_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (setRelatorio)
+                {
+                    btnConfig_Click(sender, e);
+
+                    btnRelatorio_Click(sender, e);
+                }
+            }
+            catch
+            {
+
+            }
+            
+        }
+
+        private void dateStartFilter_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (setRelatorio)
+                {
+                    btnConfig_Click(sender, e);
+
+                    btnRelatorio_Click(sender, e);
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        Point? prevPosition = null;
+        ToolTip tooltip = new ToolTip();
+
+        void chart1_MouseMove(object sender, MouseEventArgs e)
+        {
+            var pos = e.Location;
+            if (prevPosition.HasValue && pos == prevPosition.Value)
+                return;
+            tooltip.RemoveAll();
+            prevPosition = pos;
+            var results = chart1.HitTest(pos.X, pos.Y, false,
+                                            ChartElementType.DataPoint);
+            foreach (var result in results)
+            {
+                if (result.ChartElementType == ChartElementType.DataPoint)
+                {
+                    var prop = result.Object as DataPoint;
+                    if (prop != null)
+                    {
+                        var pointXPixel = result.ChartArea.AxisX.ValueToPixelPosition(prop.XValue);
+                        var pointYPixel = result.ChartArea.AxisY.ValueToPixelPosition(prop.YValues[0]);
+
+                        tooltip.Show("X=" + prop.XValue + ", Y=" + prop.YValues[0], this.chart1,
+                                            pos.X, pos.Y - 15);
+
+
+                        // check if the cursor is really close to the point (2 pixels around the point)
+                        if (Math.Abs(pos.X - pointXPixel) < 4 &&
+                            Math.Abs(pos.Y - pointYPixel) < 4)
+                        {
+                            tooltip.Show("X=" + prop.XValue + ", Y=" + prop.YValues[0], this.chart1,
+                                            pos.X, pos.Y - 15);
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

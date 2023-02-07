@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenu));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panelCabecalho = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.Button();
@@ -62,8 +65,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.fs = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dateFinishFilter = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dateStartFilter = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panelCabecalho.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelConteudo.SuspendLayout();
@@ -71,7 +82,11 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelCabecalho
@@ -365,10 +380,10 @@
             this.tabPage2.Controls.Add(this.glicemiaAlvo);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.fs);
-            this.tabPage2.Location = new System.Drawing.Point(4, 5);
+            this.tabPage2.Location = new System.Drawing.Point(4, 9);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(456, 332);
+            this.tabPage2.Size = new System.Drawing.Size(456, 328);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -472,33 +487,133 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.dataGridView1);
+            this.tabPage3.Controls.Add(this.dateFinishFilter);
+            this.tabPage3.Controls.Add(this.label11);
+            this.tabPage3.Controls.Add(this.label10);
+            this.tabPage3.Controls.Add(this.dateStartFilter);
             this.tabPage3.Controls.Add(this.label4);
-            this.tabPage3.Location = new System.Drawing.Point(4, 5);
+            this.tabPage3.Controls.Add(this.tabControl2);
+            this.tabPage3.Location = new System.Drawing.Point(4, 9);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(456, 332);
+            this.tabPage3.Size = new System.Drawing.Size(456, 328);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dateFinishFilter
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 47);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(423, 263);
-            this.dataGridView1.TabIndex = 1;
+            this.dateFinishFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateFinishFilter.Location = new System.Drawing.Point(342, 7);
+            this.dateFinishFilter.Name = "dateFinishFilter";
+            this.dateFinishFilter.Size = new System.Drawing.Size(83, 20);
+            this.dateFinishFilter.TabIndex = 6;
+            this.dateFinishFilter.ValueChanged += new System.EventHandler(this.dateFinishFilter_ValueChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(309, 7);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(27, 16);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Até";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(189, 6);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(25, 16);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "De";
+            // 
+            // dateStartFilter
+            // 
+            this.dateStartFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateStartFilter.Location = new System.Drawing.Point(220, 6);
+            this.dateStartFilter.Name = "dateStartFilter";
+            this.dateStartFilter.Size = new System.Drawing.Size(83, 20);
+            this.dateStartFilter.TabIndex = 3;
+            this.dateStartFilter.ValueChanged += new System.EventHandler(this.dateStartFilter_ValueChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(62, 14);
+            this.label4.Location = new System.Drawing.Point(13, 3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(341, 20);
+            this.label4.Size = new System.Drawing.Size(159, 20);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Módulo de Relatório: == Em Desenolvimento==";
+            this.label4.Text = "Módulo de Relatórios";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage4);
+            this.tabControl2.Controls.Add(this.tabPage5);
+            this.tabControl2.Location = new System.Drawing.Point(6, 25);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(447, 297);
+            this.tabControl2.TabIndex = 2;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.dataGridView1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(439, 271);
+            this.tabPage4.TabIndex = 0;
+            this.tabPage4.Text = "Relatório";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(423, 259);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.chart1);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(439, 271);
+            this.tabPage5.TabIndex = 1;
+            this.tabPage5.Text = "Gráfico";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            this.chart1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(7, 12);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.IsVisibleInLegend = false;
+            series1.IsXValueIndexed = true;
+            series1.LabelAngle = 45;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 4;
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(414, 266);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
+            this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
             // 
             // FormMenu
             // 
@@ -525,7 +640,11 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -567,6 +686,14 @@
         private System.Windows.Forms.Button btnAbrirCarboidratos;
         private System.Windows.Forms.Button salvarConfig;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DateTimePicker dateFinishFilter;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DateTimePicker dateStartFilter;
     }
 }
 
