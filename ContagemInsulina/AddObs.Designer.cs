@@ -120,7 +120,7 @@
             this.btnCalcular.Location = new System.Drawing.Point(108, 206);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(186, 49);
-            this.btnCalcular.TabIndex = 44;
+            this.btnCalcular.TabIndex = 2;
             this.btnCalcular.Text = "Inserir";
             this.btnCalcular.UseVisualStyleBackColor = false;
             this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
@@ -133,7 +133,7 @@
             this.campoObservacao.Multiline = true;
             this.campoObservacao.Name = "campoObservacao";
             this.campoObservacao.Size = new System.Drawing.Size(365, 81);
-            this.campoObservacao.TabIndex = 45;
+            this.campoObservacao.TabIndex = 1;
             // 
             // label8
             // 
@@ -151,7 +151,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(396, 267);
-            this.ControlBox = false;
             this.Controls.Add(this.label8);
             this.Controls.Add(this.campoObservacao);
             this.Controls.Add(this.btnCalcular);
@@ -162,6 +161,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.campoGlicemia);
             this.Controls.Add(this.label5);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Observacao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Observação";

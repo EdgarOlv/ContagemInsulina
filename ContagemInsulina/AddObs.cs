@@ -29,6 +29,7 @@ namespace ContagemInsulina
         {
             campoGlicemia.Text = Convert.ToString(glicemia.valor);
             campoInsulina.Text = Convert.ToString(glicemia.valor_aplicado);
+            campoObservacao.Focus();
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
