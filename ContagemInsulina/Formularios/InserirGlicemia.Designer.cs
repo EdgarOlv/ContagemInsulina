@@ -54,7 +54,7 @@
             this.btnInserirGlicemia.Location = new System.Drawing.Point(130, 171);
             this.btnInserirGlicemia.Name = "btnInserirGlicemia";
             this.btnInserirGlicemia.Size = new System.Drawing.Size(137, 37);
-            this.btnInserirGlicemia.TabIndex = 37;
+            this.btnInserirGlicemia.TabIndex = 3;
             this.btnInserirGlicemia.Text = "Inserir registro";
             this.btnInserirGlicemia.UseVisualStyleBackColor = true;
             this.btnInserirGlicemia.Click += new System.EventHandler(this.btnInserirGlicemia_Click);
@@ -84,16 +84,16 @@
             this.valorGlicemia.Location = new System.Drawing.Point(167, 74);
             this.valorGlicemia.Name = "valorGlicemia";
             this.valorGlicemia.Size = new System.Drawing.Size(87, 20);
-            this.valorGlicemia.TabIndex = 33;
+            this.valorGlicemia.TabIndex = 1;
             // 
             // dataGlicemia
             // 
-            this.dataGlicemia.CustomFormat = "dd/MM/yyyy hh:mm:ss";
+            this.dataGlicemia.CustomFormat = "dd/MM/yyyy HH:mm:ss";
             this.dataGlicemia.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dataGlicemia.Location = new System.Drawing.Point(154, 107);
             this.dataGlicemia.Name = "dataGlicemia";
             this.dataGlicemia.Size = new System.Drawing.Size(151, 20);
-            this.dataGlicemia.TabIndex = 39;
+            this.dataGlicemia.TabIndex = 2;
             // 
             // InserirGlicemia
             // 

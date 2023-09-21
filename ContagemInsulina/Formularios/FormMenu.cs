@@ -1,11 +1,21 @@
-﻿using System;
+﻿using ContagemInsulina.Classes;
+using ContagemInsulina.DB;
+using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+
+using MongoDB.Driver;
+using MongoDB.Bson;
+using System.Threading.Tasks;
 
 namespace ContagemInsulina
 {
@@ -15,6 +25,7 @@ namespace ContagemInsulina
         public const int HT_CAPTION = 0x2;
         List<Configuracao> configs;
         public bool setRelatorio = false;
+        public bool startRelatorio = true;
 
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -106,17 +117,99 @@ namespace ContagemInsulina
 
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
+
+            // ----------- Relatorio
+
             tabControl1.SelectedIndex = 2;
             DataTable dt = new DataTable();
             dt = Conexao.GetGlicemias(dateStartFilter.Value, dateFinishFilter.Value);
             dataGridView1.DataSource = dt;
+
+            // ----------- Grafico
 
             chart1.DataSource = dt;
             chart1.Series[0].YValueMembers = "valor";
             chart1.Series[0].XValueMember = "data";
             chart1.DataBind();
             setRelatorio = true;
-            
+
+            // ----------- Analise
+
+            dataGridViewAnalise.Rows.Clear();
+
+            TimeSpan date = Convert.ToDateTime(dateFinishFilter.Value) - Convert.ToDateTime(dateStartFilter.Value);
+
+            int totalDias = date.Days;
+
+            dataGridViewAnalise.ColumnCount = totalDias;
+
+            DateTime dataInicial = dateStartFilter.Value;
+            for (int i = 0; i < totalDias; i++)
+            {
+                dataGridViewAnalise.Columns[i].Name = dataInicial.AddDays(i).ToString("dd/MM/yyyy");
+            }
+
+            // Define os momentos do dia que deseja exibir
+            List<string> momentosDoDia = new List<string> { "7h - 9h", "9h - 11h", "11h - 14h",
+                "14h - 17h", "17h - 20h", "20h - 23h" };
+
+            //TODO: Criar classe para armazenar horarios, para poder ser alterado, chamado aq
+
+            // Cria as linhas da DataGridView para cada momento do dia
+            foreach (string momento in momentosDoDia)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridViewAnalise);
+                row.Cells[0].Value = momento;
+
+                dataGridViewAnalise.RowHeadersWidth = 100;
+                row.HeaderCell.Value = momento;
+
+                // Preenche as células com os valores de glicemia correspondentes para cada dia
+                for (int i = 0; i < totalDias; i++)
+                {
+                    DateTime data = dataInicial.AddDays(i);
+                    int valorGlicemia = 0;
+                    foreach (DataRow dataRow in dt.Rows)
+                    {
+                        DateTime dataRegistro = (DateTime)dataRow["data"];
+                        if (dataRegistro.Date == data.Date)
+                        {
+                        int hora = dataRegistro.Hour;
+                            if ((hora >= 7 && hora < 9 && momento == "7h - 9h") ||
+                                (hora >= 9 && hora < 11 && momento == "9h - 11h") ||
+                                (hora >= 11 && hora < 14 && momento == "11h - 14h") ||
+                                (hora >= 14 && hora < 17 && momento == "14h - 17h") ||
+                                (hora >= 17 && hora < 20 && momento == "17h - 20h") ||
+                                (hora >= 20 && hora < 23 && momento == "20h - 23h"))
+                            {
+                                valorGlicemia = Convert.ToInt32(dataRow["valor"]);
+                                break;
+                            }
+                        }
+                    }
+                    row.Cells[i].Value = valorGlicemia;
+                }
+                dataGridViewAnalise.Rows.Add(row);
+            }
+
+            // ----------- Analise Geral
+
+            int glucoseSum = 0;
+            int insulinSum = 0;
+            int count = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                glucoseSum += Convert.ToInt32(row["valor"]);
+                insulinSum += Convert.ToInt32(row["insulina_aplicada"]);
+                count++;
+            }
+            double glucoseAverage = glucoseSum / count;
+            int insulinTotal = insulinSum;
+
+            labelMediaGlicose.Text = glucoseAverage.ToString();
+            labelInsulinaUsada.Text = insulinTotal.ToString();  
+
         }
 
         //===============================================================================
@@ -128,6 +221,7 @@ namespace ContagemInsulina
         private object sender;
         private EventArgs e;
         int contador = 0;
+        DBFirebase firebase = new DBFirebase();
 
         public static class campoTextoAlimento
         {
@@ -143,6 +237,22 @@ namespace ContagemInsulina
             AnaliseHorario();
             CarregarConfiguracoes();
             CarregarAlimentos();
+            CarregaDadosNuvemAsync();
+        }
+
+        private async Task CarregaDadosNuvemAsync()
+        {
+            /*
+            List<GlicemiaClean> glicemias = await firebase.GetGlicemias();
+
+            if (glicemias != null)
+            {
+                foreach (GlicemiaClean glicemia in glicemias)
+                {
+                    // Faça o que precisar com cada objeto de glicemia
+                }
+            }
+            */
 
         }
 
@@ -156,9 +266,9 @@ namespace ContagemInsulina
         {
             TimeSpan horario = new TimeSpan(00, 00, 00);
             TimeSpan horario2 = new TimeSpan(09, 00, 00);
-            TimeSpan horario3 = new TimeSpan(12, 00, 00);
-            TimeSpan horario4 = new TimeSpan(15, 00, 00);
-            TimeSpan horario5 = new TimeSpan(18, 00, 00);
+            TimeSpan horario3 = new TimeSpan(11, 00, 00);
+            TimeSpan horario4 = new TimeSpan(14, 00, 00);
+            TimeSpan horario5 = new TimeSpan(17, 00, 00);
             TimeSpan horario6 = new TimeSpan(21, 00, 00);
 
             TimeSpan horaAtual = DateTime.Now.TimeOfDay;
@@ -295,7 +405,13 @@ namespace ContagemInsulina
                     totalAplicar.Text = string.Format(" Aplicar: {0:0.0}UI ", qtdCorrecao + qtdAlimentacao);
                     glicemia.Valor_aplicado = Convert.ToInt32(qtdCorrecao + qtdAlimentacao);
 
-                    if (usaDB == 1) Conexao.Add(glicemia);
+                    if (usaDB == 1)
+                    {
+                        Conexao.Add(glicemia);
+                        //DBGSheets.InsertGlicemiaNuvem(glicemia);
+                        //InsertGlicemiasFB(glicemia);
+                        firebase.AddGlicemy(glicemia);
+                    }
 
                     if (checkMalhar)
                     {
@@ -318,6 +434,21 @@ namespace ContagemInsulina
             {
                 MessageBox.Show("Insira a glicêmia corretamente!");
             }
+        }
+
+        protected async void getGlicemiasFB()
+        {
+            var contatos = await firebase.GetContatos();
+
+        }
+
+        protected async void InsertGlicemiasFB(Glicemia glicemia)
+        {
+            await firebase.AddContato(glicemia.valor,glicemia.valor_aplicado ,glicemia.data ,glicemia.obs );
+
+            MessageBox.Show("Success", "Glicemia incluído com sucesso em Nuvem");
+         
+
         }
 
         //=============================== CONFIGURAÇÕES
@@ -434,5 +565,12 @@ namespace ContagemInsulina
             }
         }
 
+        private void btnAcionar_Click(object sender, EventArgs e)
+        {
+            //ReconhecimentoVoz rc = new ReconhecimentoVoz();
+            //rc.buttonAtivarReconhecimento_Click(sender, e); 
+            var glicemia = new Glicemia(100,5, DateTime.Now,"teste");
+
+        }
     }
 }

@@ -33,7 +33,7 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panelCabecalho = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelMediaGlicemia = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnRelatorio = new System.Windows.Forms.Button();
@@ -55,6 +55,8 @@
             this.glicemiaAtual = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnAcionar = new System.Windows.Forms.Button();
             this.btnAbrirCarboidratos = new System.Windows.Forms.Button();
             this.salvarConfig = new System.Windows.Forms.Button();
             this.btnInserirGlicose = new System.Windows.Forms.Button();
@@ -75,6 +77,15 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.dataGridViewAnalise = new System.Windows.Forms.DataGridView();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelInsulinaUsada = new System.Windows.Forms.Label();
+            this.labelMediaGlicose = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.panelCabecalho.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelConteudo.SuspendLayout();
@@ -87,12 +98,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAnalise)).BeginInit();
+            this.tabPage7.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelCabecalho
             // 
             this.panelCabecalho.BackColor = System.Drawing.Color.DodgerBlue;
-            this.panelCabecalho.Controls.Add(this.label1);
+            this.panelCabecalho.Controls.Add(this.labelMediaGlicemia);
             this.panelCabecalho.Controls.Add(this.btnFechar);
             this.panelCabecalho.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCabecalho.Location = new System.Drawing.Point(0, 0);
@@ -101,16 +115,16 @@
             this.panelCabecalho.TabIndex = 0;
             this.panelCabecalho.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelCabecalho_MouseMove);
             // 
-            // label1
+            // labelMediaGlicemia
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(51, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(228, 30);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Contagem de Insulina";
+            this.labelMediaGlicemia.AutoSize = true;
+            this.labelMediaGlicemia.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMediaGlicemia.ForeColor = System.Drawing.Color.White;
+            this.labelMediaGlicemia.Location = new System.Drawing.Point(51, 6);
+            this.labelMediaGlicemia.Name = "labelMediaGlicemia";
+            this.labelMediaGlicemia.Size = new System.Drawing.Size(228, 30);
+            this.labelMediaGlicemia.TabIndex = 1;
+            this.labelMediaGlicemia.Text = "Contagem de Insulina";
             // 
             // btnFechar
             // 
@@ -371,6 +385,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label15);
+            this.tabPage2.Controls.Add(this.btnAcionar);
             this.tabPage2.Controls.Add(this.btnAbrirCarboidratos);
             this.tabPage2.Controls.Add(this.salvarConfig);
             this.tabPage2.Controls.Add(this.btnInserirGlicose);
@@ -387,6 +403,30 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label15.Location = new System.Drawing.Point(106, 19);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(28, 21);
+            this.label15.TabIndex = 48;
+            this.label15.Text = "---";
+            // 
+            // btnAcionar
+            // 
+            this.btnAcionar.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnAcionar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAcionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAcionar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnAcionar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAcionar.Location = new System.Drawing.Point(6, 10);
+            this.btnAcionar.Name = "btnAcionar";
+            this.btnAcionar.Size = new System.Drawing.Size(85, 39);
+            this.btnAcionar.TabIndex = 47;
+            this.btnAcionar.Text = "Acionar";
+            this.btnAcionar.UseVisualStyleBackColor = false;
             // 
             // btnAbrirCarboidratos
             // 
@@ -554,6 +594,8 @@
             // 
             this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Controls.Add(this.tabPage5);
+            this.tabControl2.Controls.Add(this.tabPage6);
+            this.tabControl2.Controls.Add(this.tabPage7);
             this.tabControl2.Location = new System.Drawing.Point(6, 25);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -603,8 +645,8 @@
             series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.IsValueShownAsLabel = true;
             series1.IsVisibleInLegend = false;
-            series1.IsXValueIndexed = true;
             series1.LabelAngle = 45;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
@@ -614,6 +656,99 @@
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.dataGridViewAnalise);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(439, 271);
+            this.tabPage6.TabIndex = 2;
+            this.tabPage6.Text = "Análise";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewAnalise
+            // 
+            this.dataGridViewAnalise.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAnalise.Location = new System.Drawing.Point(8, 6);
+            this.dataGridViewAnalise.Name = "dataGridViewAnalise";
+            this.dataGridViewAnalise.Size = new System.Drawing.Size(423, 259);
+            this.dataGridViewAnalise.TabIndex = 2;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.label1);
+            this.tabPage7.Controls.Add(this.labelInsulinaUsada);
+            this.tabPage7.Controls.Add(this.labelMediaGlicose);
+            this.tabPage7.Controls.Add(this.label14);
+            this.tabPage7.Controls.Add(this.label13);
+            this.tabPage7.Controls.Add(this.label12);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(439, 271);
+            this.tabPage7.TabIndex = 3;
+            this.tabPage7.Text = "Analise Geral";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.label1.Location = new System.Drawing.Point(205, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 25);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Controlado";
+            // 
+            // labelInsulinaUsada
+            // 
+            this.labelInsulinaUsada.AutoSize = true;
+            this.labelInsulinaUsada.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.labelInsulinaUsada.Location = new System.Drawing.Point(270, 114);
+            this.labelInsulinaUsada.Name = "labelInsulinaUsada";
+            this.labelInsulinaUsada.Size = new System.Drawing.Size(73, 25);
+            this.labelInsulinaUsada.TabIndex = 26;
+            this.labelInsulinaUsada.Text = "300 U.I.";
+            // 
+            // labelMediaGlicose
+            // 
+            this.labelMediaGlicose.AutoSize = true;
+            this.labelMediaGlicose.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.labelMediaGlicose.Location = new System.Drawing.Point(43, 114);
+            this.labelMediaGlicose.Name = "labelMediaGlicose";
+            this.labelMediaGlicose.Size = new System.Drawing.Size(92, 25);
+            this.labelMediaGlicose.TabIndex = 25;
+            this.labelMediaGlicose.Text = "200mg/dl";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.label14.Location = new System.Drawing.Point(132, 18);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(72, 25);
+            this.label14.TabIndex = 23;
+            this.label14.Text = "Status:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.label13.Location = new System.Drawing.Point(205, 75);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(226, 25);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Qtd de insulina utilizada";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.label12.Location = new System.Drawing.Point(14, 75);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(172, 25);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "Média da glicemia";
             // 
             // FormMenu
             // 
@@ -645,6 +780,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAnalise)).EndInit();
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -655,7 +794,7 @@
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Button btnConfig;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelMediaGlicemia;
         private System.Windows.Forms.Panel panelConteudo;
         private System.Windows.Forms.Button btnGlicemia;
         private System.Windows.Forms.Button btnRelatorio;
@@ -694,6 +833,17 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dateStartFilter;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.DataGridView dataGridViewAnalise;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label labelInsulinaUsada;
+        private System.Windows.Forms.Label labelMediaGlicose;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnAcionar;
     }
 }
 

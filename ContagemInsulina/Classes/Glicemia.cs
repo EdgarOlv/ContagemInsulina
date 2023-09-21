@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,10 +10,15 @@ namespace ContagemInsulina
 {
     public class Glicemia
     {
-        public int id;
-        public int valor;
-        public int valor_aplicado;
-        public DateTime data;
+        public int id { get; set; }
+        public int valor { get; set; }
+        public int valor_aplicado { get; set; }
+        public DateTime data { get; set; }
+        public String obs { get; set; }
+
+        public Glicemia()
+        {
+        }
 
         public Glicemia(DataTable data)
         {
@@ -37,6 +43,14 @@ namespace ContagemInsulina
             this.data = data;
         }
 
+        public Glicemia(int valor, int valor_aplicado, DateTime data, String obs)
+        {
+            this.valor = valor;
+            this.valor_aplicado = valor_aplicado;
+            this.data = data;
+            this.obs = obs;
+        }
+
         public int getValor
         {
             get { return valor; }
@@ -49,6 +63,18 @@ namespace ContagemInsulina
 
         public int Valor_aplicado { get => valor_aplicado; set => valor_aplicado = value; }
     }
-  
 
-}
+    public class GlicemiaClean
+    {
+        public int valor { get; set; }
+        public int valor_aplicado { get; set; }
+        public DateTime data { get; set; }
+        public String obs { get; set; }
+        public String loc { get; set; }
+
+        public GlicemiaClean()
+        {
+        }
+    }
+
+    }
