@@ -26,6 +26,7 @@ namespace ContagemInsulina
         public Conexao()
 
         { }
+
         private static SQLiteConnection DbConnection()
         {
             sqliteConnection = new SQLiteConnection("Data Source=D:\\DevAndroidStudio\\ContagemInsulina\\CalcInsulina.db");
@@ -97,6 +98,7 @@ namespace ContagemInsulina
                 throw ex;
             }
         }
+
         public static DataTable GetGlicemias(DateTime dateStartVar, DateTime dateFinishVar)
         {
             SQLiteDataAdapter da = null;
@@ -105,7 +107,7 @@ namespace ContagemInsulina
             {
                 using (var cmd = DbConnection().CreateCommand())
                 {
-                    cmd.CommandText = "SELECT valor, data, insulina_aplicada,obs FROM glicemias WHERE data between '"+ dateStartVar.ToString("yyyy-MM-dd hh:mm:ss") + "' and '" + dateFinishVar.ToString("yyyy-MM-dd hh:mm:ss") + "' ORDER BY id desc";
+                    cmd.CommandText = "SELECT valor, data, insulina_aplicada,obs FROM glicemias WHERE data between '"+ dateStartVar.ToString("yyyy-MM-dd hh:mm:ss") + "' and '" + dateFinishVar.ToString("yyyy-MM-dd hh:mm:ss") + "' ORDER BY data desc";
                     //MessageBox.Show(cmd.CommandText);
                     da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());                    
                     da.Fill(dt);
@@ -117,6 +119,52 @@ namespace ContagemInsulina
                 throw ex;
             }
         }
+
+        public static SQLiteDataReader GetGlicemiaGraph()
+        {
+            string sql = "SELECT valor, data FROM glicemias ORDER BY data";
+            SQLiteCommand command = new SQLiteCommand(sql, DbConnection());
+
+            // Leitura dos dados retornados pelo comando SQL
+            SQLiteDataReader reader1 = command.ExecuteReader();
+
+            return reader1;
+        }
+
+        public static DataTable GetGlicemiaAnalise()
+        {
+            string sql = "SELECT valor, data FROM glicemias ORDER BY data";
+
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(sql, DbConnection());
+            DataSet dataSet = new DataSet();
+            adapter.Fill(dataSet);
+
+            DataTable dataTable = new DataTable("Dados");
+
+            // Adicione colunas para os dias e intervalos de horas
+            dataTable.Columns.Add("Hora", typeof(DateTime));
+            dataTable.Columns.Add("Dia1", typeof(int));
+            dataTable.Columns.Add("Dia2", typeof(int));
+            dataTable.Columns.Add("Dia3", typeof(int));
+            // Adicione quantas colunas de dias desejar
+
+            // Preencha as linhas da tabela com os dados do DataSet
+            foreach (DataRow row in dataSet.Tables[0].Rows)
+            {
+                DateTime data = (DateTime)row["data"];
+                int hora = data.Hour;
+                int dia =+ 1; // Calcula o dia do ano (1 a 365)
+                int glicemia = Convert.ToInt32(row["valor"]);
+
+                DataRow dataRow = dataTable.NewRow();
+                dataRow["Hora"] = data;
+                dataRow["Dia" + dia] = glicemia;
+                dataTable.Rows.Add(dataRow);
+            }
+            return dataTable;
+
+        }
+
         public static String GetLastGlicemia()
         {
             SQLiteDataAdapter da = null;
@@ -136,6 +184,7 @@ namespace ContagemInsulina
                 throw ex;
             }
         }
+
         
         public static List<Configuracao> GetConfigAll()
         {
@@ -164,6 +213,7 @@ namespace ContagemInsulina
                 throw ex;
             }
         }
+
         public static List<Alimento> GetAlimentos()
         {
             SQLiteDataAdapter da = null;
@@ -190,6 +240,7 @@ namespace ContagemInsulina
                 throw ex;
             }
         }
+
         public static void Add(Glicemia glicemia)
         {
             try
@@ -238,7 +289,6 @@ namespace ContagemInsulina
             }
         }
 
-
         public static void Update(Glicemia glicemia)
         {
             try
@@ -260,7 +310,6 @@ namespace ContagemInsulina
                 throw ex;
             }
         }
-        
 
         public static void UpdateConfig(int idCampo, int valorCampo)
         {
@@ -282,6 +331,7 @@ namespace ContagemInsulina
                 throw ex;
             }
         }
+
         public static void UpdateConfigAlimentos(List<Alimento> alimentos)
         {
             try
@@ -339,6 +389,7 @@ namespace ContagemInsulina
                 throw ex;
             }
         }
+
         public static void Delete(int Id)
         {
             try

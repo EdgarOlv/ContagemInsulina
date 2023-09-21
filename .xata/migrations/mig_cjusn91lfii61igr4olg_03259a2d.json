@@ -1,0 +1,11 @@
+{
+  "id": "mig_cjusn91lfii61igr4olg",
+  "checksum": "1:03259a2d6c4099df6acafa6501eb851e8dd9cb90413a90f7ded33538a0b02fd8",
+  "operations": [
+    {
+      "addTable": {
+        "table": "glicemia"
+      }
+    }
+  ]
+}

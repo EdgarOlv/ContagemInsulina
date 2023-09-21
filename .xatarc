@@ -1,0 +1,7 @@
+{
+  "databaseURL": "https://Edgar-Cardoso-s-workspace-dggj77.us-east-1.xata.sh/db/edgardatabase",
+  "codegen": {
+    "output": "src/xata.js",
+    "moduleType": "esm"
+  }
+}
