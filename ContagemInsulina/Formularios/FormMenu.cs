@@ -38,11 +38,14 @@ namespace ContagemInsulina
         {
             InitializeComponent();
             glicemiaAtual.Focus();
+            glicemiaAtual.MaxLength = 3;
+
             checkBoxCorrecao.Checked = true;
             checkBoxAlimentar.Checked = true;
 
             dateStartFilter.Value = DateTime.Now.AddDays(-10);
             dateFinishFilter.Value = DateTime.Now.AddDays(1);
+
         }
         /*
         private void AbrirFormNoPanel<Forms>() where Forms : Form, new()

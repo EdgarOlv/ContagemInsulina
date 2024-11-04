@@ -50,7 +50,7 @@ namespace ContagemInsulina.DB
         {
             try
             {
-                var now = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
+                var now = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
                 var glicemia = new GlicemiaClean()
                 {
