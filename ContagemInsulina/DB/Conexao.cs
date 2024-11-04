@@ -29,7 +29,7 @@ namespace ContagemInsulina
 
         private static SQLiteConnection DbConnection()
         {
-            sqliteConnection = new SQLiteConnection("Data Source=D:\\DevAndroidStudio\\ContagemInsulina\\CalcInsulina.db");
+            sqliteConnection = new SQLiteConnection("Data Source=" + "CalcInsulina.db" + ";Version=3;");
             sqliteConnection.Open();
             return sqliteConnection;
         }

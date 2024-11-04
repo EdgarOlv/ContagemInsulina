@@ -16,6 +16,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace ContagemInsulina
 {
@@ -37,11 +38,14 @@ namespace ContagemInsulina
         {
             InitializeComponent();
             glicemiaAtual.Focus();
+            glicemiaAtual.MaxLength = 3;
+
             checkBoxCorrecao.Checked = true;
             checkBoxAlimentar.Checked = true;
 
             dateStartFilter.Value = DateTime.Now.AddDays(-10);
             dateFinishFilter.Value = DateTime.Now.AddDays(1);
+
         }
         /*
         private void AbrirFormNoPanel<Forms>() where Forms : Form, new()
@@ -245,14 +249,20 @@ namespace ContagemInsulina
             /*
             List<GlicemiaClean> glicemias = await firebase.GetGlicemias();
 
-            if (glicemias != null)
+            foreach (var glicemiaClean in glicemias)
             {
-                foreach (GlicemiaClean glicemia in glicemias)
+                DateTime dataConvertida = DateTime.ParseExact(glicemiaClean.data, "dd-MM-yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                var glicemia = new Glicemia
                 {
-                    // Faça o que precisar com cada objeto de glicemia
-                }
+                    valor = glicemiaClean.valor,
+                    data = dataConvertida,
+                    valor_aplicado = glicemiaClean.insulina_aplicada,
+                };
+
+                Conexao.Add(glicemia);
             }
             */
+
 
         }
 
@@ -439,15 +449,6 @@ namespace ContagemInsulina
         protected async void getGlicemiasFB()
         {
             var contatos = await firebase.GetContatos();
-
-        }
-
-        protected async void InsertGlicemiasFB(Glicemia glicemia)
-        {
-            await firebase.AddContato(glicemia.valor,glicemia.valor_aplicado ,glicemia.data ,glicemia.obs );
-
-            MessageBox.Show("Success", "Glicemia incluído com sucesso em Nuvem");
-         
 
         }
 

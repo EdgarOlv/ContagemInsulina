@@ -67,8 +67,8 @@ namespace ContagemInsulina
     public class GlicemiaClean
     {
         public int valor { get; set; }
-        public int valor_aplicado { get; set; }
-        public DateTime data { get; set; }
+        public int insulina_aplicada { get; set; }
+        public String data { get; set; }
         public String obs { get; set; }
         public String loc { get; set; }
 
