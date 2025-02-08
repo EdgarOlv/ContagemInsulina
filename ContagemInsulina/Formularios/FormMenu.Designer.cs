@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenu));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panelCabecalho = new System.Windows.Forms.Panel();
             this.labelMediaGlicemia = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.Button();
@@ -42,6 +42,7 @@
             this.panelConteudo = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.checkBoxTeste = new System.Windows.Forms.CheckBox();
             this.totalAplicar = new System.Windows.Forms.Label();
             this.aplicarInsulina = new System.Windows.Forms.Label();
             this.refeicao = new System.Windows.Forms.Label();
@@ -110,8 +111,9 @@
             this.panelCabecalho.Controls.Add(this.btnFechar);
             this.panelCabecalho.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCabecalho.Location = new System.Drawing.Point(0, 0);
+            this.panelCabecalho.Margin = new System.Windows.Forms.Padding(4);
             this.panelCabecalho.Name = "panelCabecalho";
-            this.panelCabecalho.Size = new System.Drawing.Size(608, 40);
+            this.panelCabecalho.Size = new System.Drawing.Size(811, 49);
             this.panelCabecalho.TabIndex = 0;
             this.panelCabecalho.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelCabecalho_MouseMove);
             // 
@@ -120,9 +122,10 @@
             this.labelMediaGlicemia.AutoSize = true;
             this.labelMediaGlicemia.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMediaGlicemia.ForeColor = System.Drawing.Color.White;
-            this.labelMediaGlicemia.Location = new System.Drawing.Point(51, 6);
+            this.labelMediaGlicemia.Location = new System.Drawing.Point(68, 7);
+            this.labelMediaGlicemia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMediaGlicemia.Name = "labelMediaGlicemia";
-            this.labelMediaGlicemia.Size = new System.Drawing.Size(228, 30);
+            this.labelMediaGlicemia.Size = new System.Drawing.Size(296, 37);
             this.labelMediaGlicemia.TabIndex = 1;
             this.labelMediaGlicemia.Text = "Contagem de Insulina";
             // 
@@ -134,9 +137,10 @@
             this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnFechar.Image")));
-            this.btnFechar.Location = new System.Drawing.Point(565, 3);
+            this.btnFechar.Location = new System.Drawing.Point(753, 4);
+            this.btnFechar.Margin = new System.Windows.Forms.Padding(4);
             this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(40, 34);
+            this.btnFechar.Size = new System.Drawing.Size(53, 42);
             this.btnFechar.TabIndex = 0;
             this.btnFechar.UseVisualStyleBackColor = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
@@ -144,13 +148,15 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.panelMenu.Controls.Add(this.checkBoxTeste);
             this.panelMenu.Controls.Add(this.btnRelatorio);
             this.panelMenu.Controls.Add(this.btnGlicemia);
             this.panelMenu.Controls.Add(this.btnConfig);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMenu.Location = new System.Drawing.Point(0, 40);
+            this.panelMenu.Location = new System.Drawing.Point(0, 49);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(4);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(141, 343);
+            this.panelMenu.Size = new System.Drawing.Size(188, 422);
             this.panelMenu.TabIndex = 1;
             // 
             // btnRelatorio
@@ -162,9 +168,10 @@
             this.btnRelatorio.ForeColor = System.Drawing.Color.White;
             this.btnRelatorio.Image = ((System.Drawing.Image)(resources.GetObject("btnRelatorio.Image")));
             this.btnRelatorio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRelatorio.Location = new System.Drawing.Point(3, 179);
+            this.btnRelatorio.Location = new System.Drawing.Point(4, 220);
+            this.btnRelatorio.Margin = new System.Windows.Forms.Padding(4);
             this.btnRelatorio.Name = "btnRelatorio";
-            this.btnRelatorio.Size = new System.Drawing.Size(140, 61);
+            this.btnRelatorio.Size = new System.Drawing.Size(187, 75);
             this.btnRelatorio.TabIndex = 2;
             this.btnRelatorio.Text = "           Relatório";
             this.btnRelatorio.UseVisualStyleBackColor = true;
@@ -179,9 +186,10 @@
             this.btnGlicemia.ForeColor = System.Drawing.Color.White;
             this.btnGlicemia.Image = ((System.Drawing.Image)(resources.GetObject("btnGlicemia.Image")));
             this.btnGlicemia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGlicemia.Location = new System.Drawing.Point(0, 42);
+            this.btnGlicemia.Location = new System.Drawing.Point(0, 52);
+            this.btnGlicemia.Margin = new System.Windows.Forms.Padding(4);
             this.btnGlicemia.Name = "btnGlicemia";
-            this.btnGlicemia.Size = new System.Drawing.Size(141, 65);
+            this.btnGlicemia.Size = new System.Drawing.Size(188, 80);
             this.btnGlicemia.TabIndex = 1;
             this.btnGlicemia.Text = "           Glicemia";
             this.btnGlicemia.UseVisualStyleBackColor = true;
@@ -196,9 +204,10 @@
             this.btnConfig.ForeColor = System.Drawing.Color.White;
             this.btnConfig.Image = ((System.Drawing.Image)(resources.GetObject("btnConfig.Image")));
             this.btnConfig.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConfig.Location = new System.Drawing.Point(0, 113);
+            this.btnConfig.Location = new System.Drawing.Point(0, 139);
+            this.btnConfig.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(141, 60);
+            this.btnConfig.Size = new System.Drawing.Size(188, 74);
             this.btnConfig.TabIndex = 0;
             this.btnConfig.Text = "           Config.";
             this.btnConfig.UseVisualStyleBackColor = true;
@@ -208,9 +217,10 @@
             // 
             this.panelConteudo.Controls.Add(this.tabControl1);
             this.panelConteudo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelConteudo.Location = new System.Drawing.Point(141, 40);
+            this.panelConteudo.Location = new System.Drawing.Point(188, 49);
+            this.panelConteudo.Margin = new System.Windows.Forms.Padding(4);
             this.panelConteudo.Name = "panelConteudo";
-            this.panelConteudo.Size = new System.Drawing.Size(467, 343);
+            this.panelConteudo.Size = new System.Drawing.Size(623, 422);
             this.panelConteudo.TabIndex = 2;
             // 
             // tabControl1
@@ -222,10 +232,11 @@
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.ItemSize = new System.Drawing.Size(58, 5);
             this.tabControl1.Location = new System.Drawing.Point(0, -1);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(464, 341);
+            this.tabControl1.Size = new System.Drawing.Size(619, 420);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -243,22 +254,36 @@
             this.tabPage1.Controls.Add(this.glicemiaAtual);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Location = new System.Drawing.Point(4, 9);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(456, 328);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Size = new System.Drawing.Size(611, 407);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxTeste
+            // 
+            this.checkBoxTeste.AutoSize = true;
+            this.checkBoxTeste.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.checkBoxTeste.Location = new System.Drawing.Point(13, 388);
+            this.checkBoxTeste.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxTeste.Name = "checkBoxTeste";
+            this.checkBoxTeste.Size = new System.Drawing.Size(138, 34);
+            this.checkBoxTeste.TabIndex = 44;
+            this.checkBoxTeste.Text = "Teste local";
+            this.checkBoxTeste.UseVisualStyleBackColor = true;
             // 
             // totalAplicar
             // 
             this.totalAplicar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.totalAplicar.AutoSize = true;
             this.totalAplicar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.totalAplicar.Location = new System.Drawing.Point(89, 283);
+            this.totalAplicar.Location = new System.Drawing.Point(119, 348);
+            this.totalAplicar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.totalAplicar.Name = "totalAplicar";
             this.totalAplicar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.totalAplicar.Size = new System.Drawing.Size(0, 21);
+            this.totalAplicar.Size = new System.Drawing.Size(0, 28);
             this.totalAplicar.TabIndex = 43;
             this.totalAplicar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -266,19 +291,21 @@
             // 
             this.aplicarInsulina.AutoSize = true;
             this.aplicarInsulina.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.aplicarInsulina.Location = new System.Drawing.Point(127, 252);
+            this.aplicarInsulina.Location = new System.Drawing.Point(169, 310);
+            this.aplicarInsulina.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.aplicarInsulina.Name = "aplicarInsulina";
-            this.aplicarInsulina.Size = new System.Drawing.Size(28, 21);
+            this.aplicarInsulina.Size = new System.Drawing.Size(36, 28);
             this.aplicarInsulina.TabIndex = 42;
             this.aplicarInsulina.Text = "---";
             // 
             // refeicao
             // 
             this.refeicao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.refeicao.Location = new System.Drawing.Point(202, 137);
+            this.refeicao.Location = new System.Drawing.Point(269, 169);
+            this.refeicao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.refeicao.Name = "refeicao";
             this.refeicao.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.refeicao.Size = new System.Drawing.Size(195, 24);
+            this.refeicao.Size = new System.Drawing.Size(260, 30);
             this.refeicao.TabIndex = 41;
             this.refeicao.Text = "---";
             this.refeicao.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -287,9 +314,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(36, 251);
+            this.label7.Location = new System.Drawing.Point(48, 309);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 21);
+            this.label7.Size = new System.Drawing.Size(111, 28);
             this.label7.TabIndex = 39;
             this.label7.Text = "Resultado:";
             // 
@@ -300,9 +328,10 @@
             this.btnCalcular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCalcular.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnCalcular.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCalcular.Location = new System.Drawing.Point(136, 179);
+            this.btnCalcular.Location = new System.Drawing.Point(181, 220);
+            this.btnCalcular.Margin = new System.Windows.Forms.Padding(4);
             this.btnCalcular.Name = "btnCalcular";
-            this.btnCalcular.Size = new System.Drawing.Size(186, 57);
+            this.btnCalcular.Size = new System.Drawing.Size(248, 70);
             this.btnCalcular.TabIndex = 37;
             this.btnCalcular.Text = "Calcular";
             this.btnCalcular.UseVisualStyleBackColor = false;
@@ -312,9 +341,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label6.Location = new System.Drawing.Point(88, 136);
+            this.label6.Location = new System.Drawing.Point(117, 167);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 21);
+            this.label6.Size = new System.Drawing.Size(137, 28);
             this.label6.TabIndex = 36;
             this.label6.Text = "Refeição atual:";
             // 
@@ -322,9 +352,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(36, 99);
+            this.label5.Location = new System.Drawing.Point(48, 122);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 21);
+            this.label5.Size = new System.Drawing.Size(108, 28);
             this.label5.TabIndex = 33;
             this.label5.Text = "Consultar:";
             // 
@@ -332,9 +363,10 @@
             // 
             this.checkBoxMalhar.AutoSize = true;
             this.checkBoxMalhar.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.checkBoxMalhar.Location = new System.Drawing.Point(328, 100);
+            this.checkBoxMalhar.Location = new System.Drawing.Point(437, 123);
+            this.checkBoxMalhar.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxMalhar.Name = "checkBoxMalhar";
-            this.checkBoxMalhar.Size = new System.Drawing.Size(69, 23);
+            this.checkBoxMalhar.Size = new System.Drawing.Size(84, 27);
             this.checkBoxMalhar.TabIndex = 32;
             this.checkBoxMalhar.Text = "Treinar";
             this.checkBoxMalhar.UseVisualStyleBackColor = true;
@@ -343,9 +375,10 @@
             // 
             this.checkBoxAlimentar.AutoSize = true;
             this.checkBoxAlimentar.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.checkBoxAlimentar.Location = new System.Drawing.Point(235, 100);
+            this.checkBoxAlimentar.Location = new System.Drawing.Point(313, 123);
+            this.checkBoxAlimentar.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxAlimentar.Name = "checkBoxAlimentar";
-            this.checkBoxAlimentar.Size = new System.Drawing.Size(87, 23);
+            this.checkBoxAlimentar.Size = new System.Drawing.Size(106, 27);
             this.checkBoxAlimentar.TabIndex = 31;
             this.checkBoxAlimentar.Text = "Alimentar";
             this.checkBoxAlimentar.UseVisualStyleBackColor = true;
@@ -355,9 +388,10 @@
             // 
             this.checkBoxCorrecao.AutoSize = true;
             this.checkBoxCorrecao.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.checkBoxCorrecao.Location = new System.Drawing.Point(147, 100);
+            this.checkBoxCorrecao.Location = new System.Drawing.Point(196, 123);
+            this.checkBoxCorrecao.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxCorrecao.Name = "checkBoxCorrecao";
-            this.checkBoxCorrecao.Size = new System.Drawing.Size(83, 23);
+            this.checkBoxCorrecao.Size = new System.Drawing.Size(101, 27);
             this.checkBoxCorrecao.TabIndex = 30;
             this.checkBoxCorrecao.Text = "Correção";
             this.checkBoxCorrecao.UseVisualStyleBackColor = true;
@@ -366,9 +400,10 @@
             // 
             this.glicemiaAtual.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.AllSystemSources;
             this.glicemiaAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.glicemiaAtual.Location = new System.Drawing.Point(187, 40);
+            this.glicemiaAtual.Location = new System.Drawing.Point(249, 49);
+            this.glicemiaAtual.Margin = new System.Windows.Forms.Padding(4);
             this.glicemiaAtual.Name = "glicemiaAtual";
-            this.glicemiaAtual.Size = new System.Drawing.Size(196, 26);
+            this.glicemiaAtual.Size = new System.Drawing.Size(260, 30);
             this.glicemiaAtual.TabIndex = 19;
             this.glicemiaAtual.Click += new System.EventHandler(this.glicemiaAtual_Click);
             this.glicemiaAtual.KeyDown += new System.Windows.Forms.KeyEventHandler(this.glicemiaAtual_KeyDown);
@@ -377,9 +412,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(40, 41);
+            this.label2.Location = new System.Drawing.Point(53, 50);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(141, 25);
+            this.label2.Size = new System.Drawing.Size(183, 32);
             this.label2.TabIndex = 20;
             this.label2.Text = "Glicêmia atual:";
             // 
@@ -397,9 +433,10 @@
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.fs);
             this.tabPage2.Location = new System.Drawing.Point(4, 9);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(456, 328);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Size = new System.Drawing.Size(611, 407);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -408,9 +445,10 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label15.Location = new System.Drawing.Point(106, 19);
+            this.label15.Location = new System.Drawing.Point(141, 23);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(28, 21);
+            this.label15.Size = new System.Drawing.Size(36, 28);
             this.label15.TabIndex = 48;
             this.label15.Text = "---";
             // 
@@ -421,9 +459,10 @@
             this.btnAcionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAcionar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnAcionar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAcionar.Location = new System.Drawing.Point(6, 10);
+            this.btnAcionar.Location = new System.Drawing.Point(8, 12);
+            this.btnAcionar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAcionar.Name = "btnAcionar";
-            this.btnAcionar.Size = new System.Drawing.Size(85, 39);
+            this.btnAcionar.Size = new System.Drawing.Size(113, 48);
             this.btnAcionar.TabIndex = 47;
             this.btnAcionar.Text = "Acionar";
             this.btnAcionar.UseVisualStyleBackColor = false;
@@ -434,9 +473,10 @@
             this.btnAbrirCarboidratos.FlatAppearance.BorderSize = 0;
             this.btnAbrirCarboidratos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAbrirCarboidratos.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAbrirCarboidratos.Location = new System.Drawing.Point(332, 236);
+            this.btnAbrirCarboidratos.Location = new System.Drawing.Point(443, 290);
+            this.btnAbrirCarboidratos.Margin = new System.Windows.Forms.Padding(4);
             this.btnAbrirCarboidratos.Name = "btnAbrirCarboidratos";
-            this.btnAbrirCarboidratos.Size = new System.Drawing.Size(108, 51);
+            this.btnAbrirCarboidratos.Size = new System.Drawing.Size(144, 63);
             this.btnAbrirCarboidratos.TabIndex = 46;
             this.btnAbrirCarboidratos.Text = "Config. Carboidratos";
             this.btnAbrirCarboidratos.UseVisualStyleBackColor = false;
@@ -449,9 +489,10 @@
             this.salvarConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.salvarConfig.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.salvarConfig.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.salvarConfig.Location = new System.Drawing.Point(140, 230);
+            this.salvarConfig.Location = new System.Drawing.Point(187, 283);
+            this.salvarConfig.Margin = new System.Windows.Forms.Padding(4);
             this.salvarConfig.Name = "salvarConfig";
-            this.salvarConfig.Size = new System.Drawing.Size(186, 63);
+            this.salvarConfig.Size = new System.Drawing.Size(248, 78);
             this.salvarConfig.TabIndex = 45;
             this.salvarConfig.Text = "Salvar Configurações";
             this.salvarConfig.UseVisualStyleBackColor = false;
@@ -463,9 +504,10 @@
             this.btnInserirGlicose.FlatAppearance.BorderSize = 0;
             this.btnInserirGlicose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInserirGlicose.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnInserirGlicose.Location = new System.Drawing.Point(22, 236);
+            this.btnInserirGlicose.Location = new System.Drawing.Point(29, 290);
+            this.btnInserirGlicose.Margin = new System.Windows.Forms.Padding(4);
             this.btnInserirGlicose.Name = "btnInserirGlicose";
-            this.btnInserirGlicose.Size = new System.Drawing.Size(112, 51);
+            this.btnInserirGlicose.Size = new System.Drawing.Size(149, 63);
             this.btnInserirGlicose.TabIndex = 44;
             this.btnInserirGlicose.Text = "Inserir glicose";
             this.btnInserirGlicose.UseVisualStyleBackColor = false;
@@ -475,54 +517,60 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(56, 157);
+            this.label3.Location = new System.Drawing.Point(75, 193);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(224, 25);
+            this.label3.Size = new System.Drawing.Size(289, 32);
             this.label3.TabIndex = 41;
             this.label3.Text = "Relação carboidrato   1/";
             // 
             // carb
             // 
             this.carb.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.carb.Location = new System.Drawing.Point(280, 155);
+            this.carb.Location = new System.Drawing.Point(373, 191);
+            this.carb.Margin = new System.Windows.Forms.Padding(4);
             this.carb.Name = "carb";
-            this.carb.Size = new System.Drawing.Size(134, 29);
+            this.carb.Size = new System.Drawing.Size(177, 34);
             this.carb.TabIndex = 40;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(56, 109);
+            this.label9.Location = new System.Drawing.Point(75, 134);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(134, 25);
+            this.label9.Size = new System.Drawing.Size(174, 32);
             this.label9.TabIndex = 39;
             this.label9.Text = "Glicêmia alvo:";
             // 
             // glicemiaAlvo
             // 
             this.glicemiaAlvo.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.glicemiaAlvo.Location = new System.Drawing.Point(280, 106);
+            this.glicemiaAlvo.Location = new System.Drawing.Point(373, 130);
+            this.glicemiaAlvo.Margin = new System.Windows.Forms.Padding(4);
             this.glicemiaAlvo.Name = "glicemiaAlvo";
-            this.glicemiaAlvo.Size = new System.Drawing.Size(134, 29);
+            this.glicemiaAlvo.Size = new System.Drawing.Size(177, 34);
             this.glicemiaAlvo.TabIndex = 38;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(56, 57);
+            this.label8.Location = new System.Drawing.Point(75, 70);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(212, 25);
+            this.label8.Size = new System.Drawing.Size(272, 32);
             this.label8.TabIndex = 37;
             this.label8.Text = "Fator de Sensibilidade:";
             // 
             // fs
             // 
             this.fs.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.fs.Location = new System.Drawing.Point(280, 55);
+            this.fs.Location = new System.Drawing.Point(373, 68);
+            this.fs.Margin = new System.Windows.Forms.Padding(4);
             this.fs.Name = "fs";
-            this.fs.Size = new System.Drawing.Size(134, 29);
+            this.fs.Size = new System.Drawing.Size(177, 34);
             this.fs.TabIndex = 36;
             // 
             // tabPage3
@@ -534,9 +582,10 @@
             this.tabPage3.Controls.Add(this.label4);
             this.tabPage3.Controls.Add(this.tabControl2);
             this.tabPage3.Location = new System.Drawing.Point(4, 9);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(456, 328);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage3.Size = new System.Drawing.Size(611, 407);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -544,9 +593,10 @@
             // dateFinishFilter
             // 
             this.dateFinishFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateFinishFilter.Location = new System.Drawing.Point(342, 7);
+            this.dateFinishFilter.Location = new System.Drawing.Point(456, 9);
+            this.dateFinishFilter.Margin = new System.Windows.Forms.Padding(4);
             this.dateFinishFilter.Name = "dateFinishFilter";
-            this.dateFinishFilter.Size = new System.Drawing.Size(83, 20);
+            this.dateFinishFilter.Size = new System.Drawing.Size(109, 22);
             this.dateFinishFilter.TabIndex = 6;
             this.dateFinishFilter.ValueChanged += new System.EventHandler(this.dateFinishFilter_ValueChanged);
             // 
@@ -554,9 +604,10 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(309, 7);
+            this.label11.Location = new System.Drawing.Point(412, 9);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(27, 16);
+            this.label11.Size = new System.Drawing.Size(34, 20);
             this.label11.TabIndex = 5;
             this.label11.Text = "Até";
             // 
@@ -564,18 +615,20 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(189, 6);
+            this.label10.Location = new System.Drawing.Point(252, 7);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(25, 16);
+            this.label10.Size = new System.Drawing.Size(31, 20);
             this.label10.TabIndex = 4;
             this.label10.Text = "De";
             // 
             // dateStartFilter
             // 
             this.dateStartFilter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateStartFilter.Location = new System.Drawing.Point(220, 6);
+            this.dateStartFilter.Location = new System.Drawing.Point(293, 7);
+            this.dateStartFilter.Margin = new System.Windows.Forms.Padding(4);
             this.dateStartFilter.Name = "dateStartFilter";
-            this.dateStartFilter.Size = new System.Drawing.Size(83, 20);
+            this.dateStartFilter.Size = new System.Drawing.Size(109, 22);
             this.dateStartFilter.TabIndex = 3;
             this.dateStartFilter.ValueChanged += new System.EventHandler(this.dateStartFilter_ValueChanged);
             // 
@@ -583,9 +636,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 3);
+            this.label4.Location = new System.Drawing.Point(17, 4);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(159, 20);
+            this.label4.Size = new System.Drawing.Size(195, 25);
             this.label4.TabIndex = 0;
             this.label4.Text = "Módulo de Relatórios";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -596,19 +650,21 @@
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Controls.Add(this.tabPage6);
             this.tabControl2.Controls.Add(this.tabPage7);
-            this.tabControl2.Location = new System.Drawing.Point(6, 25);
+            this.tabControl2.Location = new System.Drawing.Point(8, 31);
+            this.tabControl2.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(447, 297);
+            this.tabControl2.Size = new System.Drawing.Size(596, 366);
             this.tabControl2.TabIndex = 2;
             // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.dataGridView1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(439, 271);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage4.Size = new System.Drawing.Size(588, 337);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "Relatório";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -616,43 +672,47 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
+            this.dataGridView1.Location = new System.Drawing.Point(8, 7);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(423, 259);
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(564, 319);
             this.dataGridView1.TabIndex = 1;
             // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.chart1);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(439, 271);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage5.Size = new System.Drawing.Size(588, 337);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Gráfico";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(7, 12);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
+            this.chart1.Location = new System.Drawing.Point(9, 15);
+            this.chart1.Margin = new System.Windows.Forms.Padding(4);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.IsValueShownAsLabel = true;
-            series1.IsVisibleInLegend = false;
-            series1.LabelAngle = 45;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 4;
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(414, 266);
+            series3.BorderWidth = 2;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.IsValueShownAsLabel = true;
+            series3.IsVisibleInLegend = false;
+            series3.LabelAngle = 45;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            series3.YValuesPerPoint = 4;
+            this.chart1.Series.Add(series3);
+            this.chart1.Size = new System.Drawing.Size(552, 327);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
@@ -660,9 +720,10 @@
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.dataGridViewAnalise);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Location = new System.Drawing.Point(4, 25);
+            this.tabPage6.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(439, 271);
+            this.tabPage6.Size = new System.Drawing.Size(588, 337);
             this.tabPage6.TabIndex = 2;
             this.tabPage6.Text = "Análise";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -670,9 +731,11 @@
             // dataGridViewAnalise
             // 
             this.dataGridViewAnalise.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAnalise.Location = new System.Drawing.Point(8, 6);
+            this.dataGridViewAnalise.Location = new System.Drawing.Point(11, 7);
+            this.dataGridViewAnalise.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewAnalise.Name = "dataGridViewAnalise";
-            this.dataGridViewAnalise.Size = new System.Drawing.Size(423, 259);
+            this.dataGridViewAnalise.RowHeadersWidth = 51;
+            this.dataGridViewAnalise.Size = new System.Drawing.Size(564, 319);
             this.dataGridViewAnalise.TabIndex = 2;
             // 
             // tabPage7
@@ -683,9 +746,10 @@
             this.tabPage7.Controls.Add(this.label14);
             this.tabPage7.Controls.Add(this.label13);
             this.tabPage7.Controls.Add(this.label12);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Location = new System.Drawing.Point(4, 25);
+            this.tabPage7.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(439, 271);
+            this.tabPage7.Size = new System.Drawing.Size(588, 337);
             this.tabPage7.TabIndex = 3;
             this.tabPage7.Text = "Analise Geral";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -694,9 +758,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.label1.Location = new System.Drawing.Point(205, 18);
+            this.label1.Location = new System.Drawing.Point(273, 22);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 25);
+            this.label1.Size = new System.Drawing.Size(133, 32);
             this.label1.TabIndex = 27;
             this.label1.Text = "Controlado";
             // 
@@ -704,9 +769,10 @@
             // 
             this.labelInsulinaUsada.AutoSize = true;
             this.labelInsulinaUsada.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.labelInsulinaUsada.Location = new System.Drawing.Point(270, 114);
+            this.labelInsulinaUsada.Location = new System.Drawing.Point(360, 140);
+            this.labelInsulinaUsada.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelInsulinaUsada.Name = "labelInsulinaUsada";
-            this.labelInsulinaUsada.Size = new System.Drawing.Size(73, 25);
+            this.labelInsulinaUsada.Size = new System.Drawing.Size(92, 32);
             this.labelInsulinaUsada.TabIndex = 26;
             this.labelInsulinaUsada.Text = "300 U.I.";
             // 
@@ -714,9 +780,10 @@
             // 
             this.labelMediaGlicose.AutoSize = true;
             this.labelMediaGlicose.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.labelMediaGlicose.Location = new System.Drawing.Point(43, 114);
+            this.labelMediaGlicose.Location = new System.Drawing.Point(57, 140);
+            this.labelMediaGlicose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMediaGlicose.Name = "labelMediaGlicose";
-            this.labelMediaGlicose.Size = new System.Drawing.Size(92, 25);
+            this.labelMediaGlicose.Size = new System.Drawing.Size(117, 32);
             this.labelMediaGlicose.TabIndex = 25;
             this.labelMediaGlicose.Text = "200mg/dl";
             // 
@@ -724,9 +791,10 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label14.Location = new System.Drawing.Point(132, 18);
+            this.label14.Location = new System.Drawing.Point(176, 22);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(72, 25);
+            this.label14.Size = new System.Drawing.Size(90, 32);
             this.label14.TabIndex = 23;
             this.label14.Text = "Status:";
             // 
@@ -734,9 +802,10 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(205, 75);
+            this.label13.Location = new System.Drawing.Point(273, 92);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(226, 25);
+            this.label13.Size = new System.Drawing.Size(293, 32);
             this.label13.TabIndex = 22;
             this.label13.Text = "Qtd de insulina utilizada";
             // 
@@ -744,22 +813,24 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(14, 75);
+            this.label12.Location = new System.Drawing.Point(19, 92);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(172, 25);
+            this.label12.Size = new System.Drawing.Size(223, 32);
             this.label12.TabIndex = 21;
             this.label12.Text = "Média da glicemia";
             // 
             // FormMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 383);
+            this.ClientSize = new System.Drawing.Size(811, 471);
             this.Controls.Add(this.panelConteudo);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelCabecalho);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contagem de Insulina";
@@ -767,6 +838,7 @@
             this.panelCabecalho.ResumeLayout(false);
             this.panelCabecalho.PerformLayout();
             this.panelMenu.ResumeLayout(false);
+            this.panelMenu.PerformLayout();
             this.panelConteudo.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -844,6 +916,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnAcionar;
+        private System.Windows.Forms.CheckBox checkBoxTeste;
     }
 }
 

@@ -380,6 +380,7 @@ namespace ContagemInsulina
             int valorGlicemia = 0;
             float qtdCorrecao = 0;
             float qtdAlimentacao = 0;
+            float valorAplicar = 0;
 
             try
             {
@@ -389,7 +390,6 @@ namespace ContagemInsulina
                 {
 
                     aplicarInsulina.Text = string.Format("Aplicar");
-                    var checkMalhar = checkBoxMalhar.Checked;
 
                     Glicemia glicemia = new Glicemia(valorGlicemia);
 
@@ -399,8 +399,7 @@ namespace ContagemInsulina
                         qtdCorrecao = (float)(valorGlicemia - valorglicemiaAlvo) / valorfs;
 
                         aplicarInsulina.Text += string.Format(" Correção {0:0.0}UI ", qtdCorrecao);
-
-                        if (checkMalhar) qtdCorrecao = qtdCorrecao / 2;
+                        valorAplicar += qtdCorrecao;
 
                     }
 
@@ -409,27 +408,37 @@ namespace ContagemInsulina
                         qtdAlimentacao += (float)qtdCarboidrato / valorRelacaoCarb;
 
                         aplicarInsulina.Text += string.Format(" Alimento {0:0.0}UI ", qtdAlimentacao);
+                        valorAplicar += qtdAlimentacao;
 
                     }
 
-                    totalAplicar.Text = string.Format(" Aplicar: {0:0.0}UI ", qtdCorrecao + qtdAlimentacao);
-                    glicemia.Valor_aplicado = Convert.ToInt32(qtdCorrecao + qtdAlimentacao);
+                    if (checkBoxMalhar.Checked)
+                    {
+                        TreinoGym treino = new TreinoGym();
 
-                    if (usaDB == 1)
+                        totalAplicar.Text += string.Format(" e ");
+                        totalAplicar.Text += treino.oQueFazer(Convert.ToInt32(glicemiaAtual.Text));
+                        totalAplicar.Text = string.Format(" Aplicar: {0:0.0}UI ", (valorAplicar) /2);
+
+                    }
+                    else
+                    {
+                        totalAplicar.Text = string.Format(" Aplicar: {0:0.0}UI ", valorAplicar);
+
+                    }
+
+                    glicemia.Valor_aplicado = Convert.ToInt32(valorAplicar);
+
+                    if (usaDB == 1 & !checkBoxTeste.Checked)
                     {
                         Conexao.Add(glicemia);
                         //DBGSheets.InsertGlicemiaNuvem(glicemia);
                         //InsertGlicemiasFB(glicemia);
                         firebase.AddGlicemy(glicemia);
                     }
-
-                    if (checkMalhar)
+                    if (checkBoxTeste.Checked)
                     {
-                        TreinoGym treino = new TreinoGym();
-
-                        totalAplicar.Text += string.Format(" e ");
-                        totalAplicar.Text += treino.oQueFazer(Convert.ToInt32(glicemiaAtual.Text));
-
+                        MessageBox.Show("Modo teste sem enviar ao banco");
                     }
 
                     glicemiaAtual.Text = string.Format(" Ultima glicemia: {0} ", valorGlicemia);
